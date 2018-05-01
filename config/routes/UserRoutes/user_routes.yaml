@@ -1,0 +1,11 @@
+insertUser:
+    path: /insertUser/{name}/{apellidos}/{fechaNacimiento}/{nickName}/{email}/{password}
+    controller: App\Controller\UserController::insertUser
+
+success:
+    path: /success
+    controller: App\Controller\UserController::success
+
+formInsertUser:
+    path: /formInsertUser
+    controller: App\Controller\UserController::formInsertUser
