@@ -2,12 +2,6 @@
 #    path: /
 #    controller: App\Controller\DefaultController::index
 
-
-
-generatePass:
-    path: /generatePass/{pass}
-    controller: App\Controller\ControllerPassword:generateHashPass
-
 index:
     resource: 'routes/UserRoutes/user_routes.yaml'
     prefix: /user
