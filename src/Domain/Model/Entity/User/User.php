@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Domain\Model\Entity;
+namespace App\Domain\Model\Entity\User;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Infrastructure\Repository\UserRepository")
+ * @ORM\Entity(repositoryClass="App\Infrastructure\Repository\User\UserRepository")
  */
 class User
 {

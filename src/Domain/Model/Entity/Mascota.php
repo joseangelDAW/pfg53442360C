@@ -23,7 +23,7 @@ class Mascota
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Domain\Model\Entity\User", inversedBy="users")
+     * @ORM\ManyToOne(targetEntity="App\Domain\Model\Entity\User\User", inversedBy="users")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;

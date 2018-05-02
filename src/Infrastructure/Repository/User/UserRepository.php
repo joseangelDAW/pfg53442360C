@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Infrastructure\Repository;
+namespace App\Infrastructure\Repository\User;
 
-use App\Domain\Model\Entity\User;
+use App\Domain\Model\Entity\User\User;
+use App\Domain\Model\Entity\User\UserRepositoryInterface;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\EntityRepository;
 
-class UserRepository extends EntityRepository
+class UserRepository extends ServiceEntityRepository implements UserRepositoryInterface
 {
     public function insertUser(
         string $name,

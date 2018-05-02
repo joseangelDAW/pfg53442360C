@@ -8,7 +8,7 @@
 
 namespace App\Controller;
 
-use App\Domain\Model\Entity\User;
+use App\Domain\Model\Entity\User\User;
 use App\Infrastructure\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,6 +34,10 @@ class UserController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+//            $em = $this->getDoctrine()->getManager();
+//            $em->persist($user);
+//            $em->flush();
+
             $data = $form->getData();
 
             $user->setName($data->getName());
