@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <div class="form1">
+                    <h2>Nuevo usuario</h2>
+                    {{ form_start(form, {'action':'', 'method':'POST', 'attr': {'class': ''}})}}
+                    <div>
+                        <div class="row">
+                            <div class="col form-file">
+                                <span>Nombre</span>
+                                {{ form_widget(form.name, {'attr': {'class': 'form-control bg-warning'}}) }}
+                            </div>
+                            <div class="col form-file">
+                                <span>Apellidos</span>
+                                {{ form_widget(form.surname, {'attr': {'class': 'form-control bg-warning'}}) }}
+                            </div>
+                        </div>
+
+
+                        <div class="form-file">
+                            <span>Fecha de nacimiento</span>
+                            {{ form_widget(form.birthDate, {'attr': {'class': ''}}) }}
+                        </div>
+                        <div class="form-file">
+                            <span>Nickname</span>
+                            {{ form_widget(form.nickname, {'attr': {'class': 'form-control bg-warning'}}) }}
+                        </div>
+                        <div class="form-file">
+                            <span>Correo electronico</span>
+                            {{ form_widget(form.email, {'attr': {'class': 'form-control bg-warning'}}) }}
+                        </div>
+                        <div class="form-file">
+                            <span>Password</span>
+                            {{ form_widget(form.password, {'attr': {'class': 'form-control bg-warning'}}) }}
+                        </div>
+                        <div class="form-file">
+                            {{ form_end(form)}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3"></div>
+        </div>
+
+    </div>
+{% endblock %}

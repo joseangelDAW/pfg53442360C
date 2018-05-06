@@ -1,55 +1,40 @@
 <?php
 
-namespace App\Domain\Model\Entity\User;
+namespace App\Infrastructure\Form\User;
 
-use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass="App\Infrastructure\Repository\User\UserRepository")
- */
-class User
+class UserClass
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
-
-    /**
-     * @ORM\Column(type="string", length=25)
+     * @Assert\NotBlank()
      */
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=40)
+     * @Assert\NotBlank()
      */
     private $surname;
 
     /**
-     * @ORM\Column(type="string", length=20, unique=true)
+     * @Assert\NotBlank()
      */
     private $nickname;
 
     /**
-     * @ORM\Column(type="string", length=60)
+     * @Assert\NotBlank()
      */
     private $password;
 
     /**
-     * @ORM\Column(type="date")
+     * @Assert\NotBlank()
      */
     private $birthDate;
 
     /**
-     * @ORM\Column(type="string", length=100, unique=true)
+     * @Assert\NotBlank()
      */
     private $email;
-
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * @return mixed
@@ -146,7 +131,6 @@ class User
     {
         $this->email = $email;
     }
-
 
 
 }

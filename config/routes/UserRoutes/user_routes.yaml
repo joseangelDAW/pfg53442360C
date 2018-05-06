@@ -1,11 +1,11 @@
-insertUser:
-    path: /insertUser/{name}/{apellidos}/{fechaNacimiento}/{nickName}/{email}/{password}
-    controller: App\Controller\UserController::insertUser
-
 success:
-    path: /success
-    controller: App\Controller\UserController::success
+    path: /success/{name}/{apellidos}
+    controller: App\Infrastructure\Controller\UserController::success
 
-formInsertUser:
-    path: /formInsertUser
-    controller: App\Controller\UserController::formInsertUser
+insertUser:
+    path: /insertUser
+    controller: App\Infrastructure\Controller\UserController::insertUser
+
+insertAddress:
+    path: /insertAddress/{street}/{number}/{userId}/{floor}/{floorInformation}/{province}/{city}/{cp}
+    controller: App\Infrastructure\Controller\AddressController::insertAddress

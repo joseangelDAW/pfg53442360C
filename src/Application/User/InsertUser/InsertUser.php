@@ -8,19 +8,26 @@
 
 namespace App\Application\User\InsertUser;
 
-
-use App\Infrastructure\Repository\User\UserRepository;
+use App\Domain\Model\Entity\User\UserRepositoryInterface;
 
 class InsertUser
 {
     private $userRepository;
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepositoryInterface $userRepository)
     {
         $this->userRepository = $userRepository;
     }
 
-    public function handle()
+    public function handle(InsertUserCommand $insertUserCommand)
     {
-
+        $userEntity = $this->userRepository->insertUser(
+            $insertUserCommand->getName(),
+            $insertUserCommand->getSurname(),
+            $insertUserCommand->getBirthDate(),
+            $insertUserCommand->getNickName(),
+            $insertUserCommand->getEmail(),
+            $insertUserCommand->getPassword()
+        );
+        $this->userRepository->persistAndFlush($userEntity);
     }
 }

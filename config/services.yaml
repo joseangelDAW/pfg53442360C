@@ -20,8 +20,8 @@ services:
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
-    App\Controller\:
-        resource: '../src/Controller'
+    App\Infrastructure\Controller\:
+        resource: '../src/Infrastructure/Controller'
         tags: ['controller.service_arguments']
 
     # add more service definitions when explicit configuration is needed
@@ -31,3 +31,8 @@ services:
         arguments:
         - '@Doctrine\Common\Persistence\ManagerRegistry'
         - 'App\Domain\Model\Entity\User\User'
+
+    App\Infrastructure\Repository\Address\AddressRepository:
+            arguments:
+            - '@Doctrine\Common\Persistence\ManagerRegistry'
+            - 'App\Domain\Model\Entity\Address\Address'

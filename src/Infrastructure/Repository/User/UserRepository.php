@@ -5,27 +5,24 @@ namespace App\Infrastructure\Repository\User;
 use App\Domain\Model\Entity\User\User;
 use App\Domain\Model\Entity\User\UserRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\EntityRepository;
 
 class UserRepository extends ServiceEntityRepository implements UserRepositoryInterface
 {
     public function insertUser(
         string $name,
-        string $apellidos,
-        \DateTime $fechaNacimiento,
+        string $surname,
+        \DateTime $birthDate,
         string $nickName,
-        string $password,
-        string $email
+        string $email,
+        string $password
     ): ?User {
         $user = new User();
         $user->setName($name);
-        $user->setApellidos($apellidos);
-        $user->setFechaNacimiento($fechaNacimiento);
+        $user->setSurname($surname);
+        $user->setBirthDate($birthDate);
         $user->setNickname($nickName);
         $user->setEmail($email);
         $user->setPassword(password_hash($password, PASSWORD_DEFAULT));
-
-        //$this->persistAndFlush($user);
 
         return $user;
     }
