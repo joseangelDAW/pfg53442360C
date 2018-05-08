@@ -57,6 +57,11 @@ class AddressRepository extends ServiceEntityRepository implements AddressReposi
         return $this->findOneBy(["id" => $id]);
     }
 
+    public function findAddressByKey(string $key, string $value): array
+    {
+        return $this->findBy([$key => $value]);
+    }
+
     public function persistAndFlush(Address $address): void
     {
         $this->getEntityManager()->persist($address);

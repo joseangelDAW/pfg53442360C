@@ -10,6 +10,13 @@ namespace App\Infrastructure\Controller;
 
 
 use App\Application\Address\InsertAddress\InsertAddress;
+use App\Application\Address\InsertAddress\InsertAddressCommand;
+use App\Application\Address\ListAddress\ListAddress;
+use App\Application\Address\ListAddress\ListAddressCommand;
+use App\Application\Address\ListAddressByKey\ListAddressByKey;
+use App\Application\Address\ListAddressByKey\ListAddressByKeyCommand;
+use App\Domain\Model\Entity\Address\Address;
+use App\Infrastructure\Repository\Address\AddressRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class AddressController extends Controller
@@ -27,15 +34,32 @@ class AddressController extends Controller
     )
     {
         $insertAddress->handle(
-            $street,
-            $number,
-            $userId,
-            $floor,
-            $floorInformation,
-            $province,
-            $city,
-            $cp
+            new InsertAddressCommand(
+                $street,
+                $number,
+                $userId,
+                $floor,
+                $floorInformation,
+                $province,
+                $city,
+                $cp
+            )
         );
         return $this->json(['Ok']);
+    }
+
+    public function listAddress(ListAddress $listAddress)
+    {
+        $output = $listAddress->handle(new ListAddressCommand());
+        return $this->json([$output]);
+    }
+
+
+    /* Experimento, posible implementacion */
+
+    public function findAddressByKey(string $key, string $value, ListAddressByKey $listAddressByKey)
+    {
+        $output = $listAddressByKey->handle(new ListAddressByKeyCommand($key, $value));
+        return $this->json([$output]);
     }
 }

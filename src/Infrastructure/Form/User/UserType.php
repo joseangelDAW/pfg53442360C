@@ -18,6 +18,7 @@ class UserType extends AbstractType
             ->add('name', TextType::class, array(
                 'data' => $nombre))
             ->add('surname')
+//            ->add('birthDate', date("Y-m-d"))
             ->add('birthDate', DateType::class,
                 [
                     'widget' => 'choice',

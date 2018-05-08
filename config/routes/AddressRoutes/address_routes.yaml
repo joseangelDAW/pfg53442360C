@@ -1,0 +1,11 @@
+insertAddress:
+    path: /insertAddress/{street}/{number}/{userId}/{floor}/{floorInformation}/{province}/{city}/{cp}
+    controller: App\Infrastructure\Controller\AddressController::insertAddress
+
+listAddress:
+    path: /listAddress
+    controller: App\Infrastructure\Controller\AddressController::listAddress
+
+findAddressByKey:
+    path: /findAddressByKey/{key}/{value}
+    controller: App\Infrastructure\Controller\AddressController::findAddressByKey

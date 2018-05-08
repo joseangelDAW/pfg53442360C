@@ -18,7 +18,10 @@ class InsertUser
         $this->userRepository = $userRepository;
     }
 
-    public function handle(InsertUserCommand $insertUserCommand)
+    /**
+     * @param InsertUserCommand $insertUserCommand
+     */
+    public function handle(InsertUserCommand $insertUserCommand): void
     {
         $userEntity = $this->userRepository->insertUser(
             $insertUserCommand->getName(),

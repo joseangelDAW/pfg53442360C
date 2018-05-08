@@ -10,6 +10,8 @@ namespace App\Infrastructure\Controller;
 
 use App\Application\User\InsertUser\InsertUser;
 use App\Application\User\InsertUser\InsertUserCommand;
+use App\Application\User\ListUser\ListUser;
+use App\Application\User\ListUser\ListUserCommand;
 use App\Infrastructure\Form\User\UserClass;
 use App\Infrastructure\Form\User\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -43,7 +45,7 @@ class UserController extends Controller
                 'success',
                 [
                     'name' => $user->getName(),
-                    'apellidos' => $user->getSurname()
+                    'fecha_nacimiento' => $user->getBirthDate()->format('Y-m-d')
                 ]
             );
         }
@@ -56,13 +58,18 @@ class UserController extends Controller
         );
     }
 
+    public function listUser(ListUser $listUser)
+    {
+        $output = $listUser->handle(new ListUserCommand());
+        return $this->json([$output]);
+    }
 
-    public function success($name, $apellidos)
+    public function success($name, $fecha_nacimiento)
     {
         return $this->json([
             'success' => 'Los datos del formulario se han introducido con exito',
             'nombre' => $name,
-            'apellidos' => $apellidos
+            'facha_nacimiento' => $fecha_nacimiento,
         ]);
     }
 

@@ -1,11 +1,12 @@
 success:
-    path: /success/{name}/{apellidos}
+    path: /success/{name}/{fecha_nacimiento}
     controller: App\Infrastructure\Controller\UserController::success
 
 insertUser:
     path: /insertUser
     controller: App\Infrastructure\Controller\UserController::insertUser
 
-insertAddress:
-    path: /insertAddress/{street}/{number}/{userId}/{floor}/{floorInformation}/{province}/{city}/{cp}
-    controller: App\Infrastructure\Controller\AddressController::insertAddress
+listUser:
+    path: /listUser
+    controller: App\Infrastructure\Controller\UserController::listUser
+

@@ -2,6 +2,10 @@
 #    path: /
 #    controller: App\Controller\DefaultController::index
 
-index:
+user:
     resource: 'routes/UserRoutes/user_routes.yaml'
     prefix: /user
+
+address:
+    resource: 'routes/AddressRoutes/address_routes.yaml'
+    prefix: /address

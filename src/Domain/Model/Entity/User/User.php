@@ -3,6 +3,7 @@
 namespace App\Domain\Model\Entity\User;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * @ORM\Entity(repositoryClass="App\Infrastructure\Repository\User\UserRepository")

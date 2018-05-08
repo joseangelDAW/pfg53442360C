@@ -9,6 +9,7 @@
 namespace App\Domain\Model\Entity\Address;
 
 
+use App\Domain\Model\Entity\User\User;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -89,9 +90,9 @@ class Address
     }
 
     /**
-     * @return mixed
+     * @return User
      */
-    public function getUser()
+    public function getUser(): User
     {
         return $this->user;
     }
