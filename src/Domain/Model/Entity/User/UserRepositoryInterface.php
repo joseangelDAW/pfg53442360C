@@ -21,9 +21,17 @@ interface UserRepositoryInterface
 
     public function listUser(): array;
 
-    public function updateUser(User $user, string $name): void;
+    public function updateUser(
+        User $user,
+        string $name,
+        string $surname,
+        string $nickname,
+        string $email
+    ): ?User;
 
     public function findUserById(int $id): ?User;
+
+    public function findUserByKey(string $key, string $value): array;
 
     public function persistAndFlush(User $user): void;
 }

@@ -9,35 +9,49 @@
 namespace App\Application\Address\InsertAddress;
 
 use App\Domain\Model\Entity\Address\AddressRepositoryInterface;
+use App\Domain\Model\Entity\User\UserDoesNotExistException;
 use App\Domain\Model\Entity\User\UserRepositoryInterface;
+use App\Domain\Model\Service\Entity\Address\CheckIfUserExists;
 
 class InsertAddress
 {
     private $addressRepository;
     private $userRepository;
+    private $checkIfUserExists;
 
     /**
      * InsertAddress constructor.
      * @param AddressRepositoryInterface $addressRepository
      * @param UserRepositoryInterface $userRepository
+     * @param CheckIfUserExists $checkIfUserExists
      */
     public function __construct(
         AddressRepositoryInterface $addressRepository,
-        UserRepositoryInterface $userRepository
+        UserRepositoryInterface $userRepository,
+        CheckIfUserExists $checkIfUserExists
+
     )
     {
         $this->addressRepository = $addressRepository;
         $this->userRepository = $userRepository;
+        $this->checkIfUserExists = $checkIfUserExists;
     }
 
     /**
      * @param InsertAddressCommand $insertAddressCommand
+     * @return string
      */
-    public function handle(InsertAddressCommand $insertAddressCommand): void
+    public function handle(InsertAddressCommand $insertAddressCommand): string
     {
-        $userEntity = $this
-            ->userRepository
-            ->findUserById($insertAddressCommand->getUserId());
+        $output = "ok";
+
+        $userId = $insertAddressCommand->getUserId();
+        try {
+            $userEntity = $this->checkIfUserExists->check($userId);
+        } catch (UserDoesNotExistException $unex) {
+            return $output = $unex->getMessage();
+        }
+
 
         $addressEntity = $this->addressRepository->insertAddress(
             $insertAddressCommand->getStreet(),
@@ -50,5 +64,7 @@ class InsertAddress
             $insertAddressCommand->getCp()
         );
         $this->addressRepository->persistAndFlush($addressEntity);
+
+        return $output;
     }
 }

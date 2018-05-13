@@ -16,10 +16,14 @@ use App\Infrastructure\Form\User\UserClass;
 use App\Infrastructure\Form\User\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
 {
     /**
+     * @param Request $request
+     * @param InsertUser $insertUser
+     * @return Response
      * @throws \Assert\AssertionFailedException
      */
     public function insertUser(Request $request, InsertUser $insertUser)
@@ -31,7 +35,7 @@ class UserController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-        $insertUser->handle(
+        $output = $insertUser->handle(
             new InsertUserCommand(
                 $user->getName(),
                 $user->getSurname(),
@@ -41,13 +45,15 @@ class UserController extends Controller
                 $user->getPassword()
             )
         );
-            return $this->redirectToRoute(
-                'success',
-                [
-                    'name' => $user->getName(),
-                    'fecha_nacimiento' => $user->getBirthDate()->format('Y-m-d')
-                ]
-            );
+
+        return $this->json([$output]);
+//            return $this->redirectToRoute(
+//                'success',
+//                [
+//                    'name' => $user->getName(),
+//                    'fecha_nacimiento' => $user->getBirthDate()->format('Y-m-d')
+//                ]
+//            );
         }
 
         return $this->render(
@@ -61,9 +67,14 @@ class UserController extends Controller
     public function listUser(ListUser $listUser)
     {
         $output = $listUser->handle(new ListUserCommand());
-        return $this->json([$output]);
+        return $this->json($output);
     }
 
+    /**
+     * @param $name
+     * @param $fecha_nacimiento
+     * @return Response
+     */
     public function success($name, $fecha_nacimiento)
     {
         return $this->json([

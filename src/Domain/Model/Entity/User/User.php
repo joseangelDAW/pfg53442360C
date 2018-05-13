@@ -38,7 +38,7 @@ class User
     private $password;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date"  )
      */
     private $birthDate;
 

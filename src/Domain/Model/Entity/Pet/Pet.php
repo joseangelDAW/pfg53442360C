@@ -39,7 +39,7 @@ class Pet
     private $race;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     private $birth_date;
 

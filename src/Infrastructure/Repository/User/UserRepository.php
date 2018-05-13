@@ -32,15 +32,27 @@ class UserRepository extends ServiceEntityRepository implements UserRepositoryIn
         return $this->findAll();
     }
 
-    public function updateUser(User $user, string $name):void
+    public function updateUser(
+        User $user,
+        string $name,
+        string $surname,
+        string $nickname,
+        string $email
+    ): ?User
     {
         $user->setName($name);
-        $this->persistAndFlush($user);
+        $user->setSurname($surname);
+        $user->setNickname($nickname);
     }
 
     public function findUserById(int $id): ?User
     {
         return $this->findOneBy(["id" => $id]);
+    }
+
+    public function findUserByKey(string $key, string $value): array
+    {
+        return $this->findBy([$key => $value]);
     }
 
     public function persistAndFlush(User $user): void
