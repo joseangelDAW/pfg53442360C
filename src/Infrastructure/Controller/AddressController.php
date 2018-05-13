@@ -52,6 +52,12 @@ class AddressController extends Controller
         return $this->json($output);
     }
 
+    /* Implementar */
+    public function updateAddress()
+    {
+
+    }
+
     public function findAddressByKey(string $key, string $value, ListAddressByKey $listAddressByKey)
     {
         $output = $listAddressByKey->handle(new ListAddressByKeyCommand($key, $value));

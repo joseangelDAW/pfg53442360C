@@ -70,6 +70,12 @@ class UserController extends Controller
         return $this->json($output);
     }
 
+    /* Implementar */
+    public function updateUser ()
+    {
+
+    }
+
     /**
      * @param $name
      * @param $fecha_nacimiento

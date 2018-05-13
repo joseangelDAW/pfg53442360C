@@ -27,11 +27,22 @@ interface AddressRepositoryInterface
 
     public function listAddress(): array;
 
-    public function updateUser(User $user, string $name):void;
+    public function updateAddress(
+        Address $addressEntity,
+        string $street,
+        string $number,
+        string $floor,
+        string $floorInformation,
+        string $province,
+        string $city,
+        string $cp
+    ): ?Address;
 
     public function findUserById(int $id): ?User;
 
     public function findAddressByKey(string $key, string $value): array;
+
+    public function findAddressById(int $id): ?Address;
 
     public function persistAndFlush(Address $address): void;
 }

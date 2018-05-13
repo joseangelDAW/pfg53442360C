@@ -34,7 +34,6 @@ class ListAddressByKeyTransform implements ListAddressByKeyTransformInterface
                             "nick_name" => $address->getUser()->getNickname(),
                             "email" => $address->getUser()->getEmail()
                         ]
-
                 ];
         }
         return $queryOutput;

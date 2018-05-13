@@ -15,6 +15,12 @@ class ListAddressByKeyCommand
     private $key;
     private $value;
 
+    /**
+     * ListAddressByKeyCommand constructor.
+     * @param $key
+     * @param $value
+     * @throws \Assert\AssertionFailedException
+     */
     public function __construct($key, $value)
     {
         Assertion::notBlank($key);
