@@ -16,34 +16,44 @@ use App\Application\Address\ListAddress\ListAddressCommand;
 use App\Application\Address\ListAddressByKey\ListAddressByKey;
 use App\Application\Address\ListAddressByKey\ListAddressByKeyCommand;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class AddressController extends Controller
 {
+    /**
+     * @param Request $request
+     * @param InsertAddress $insertAddress
+     * @return Response
+     * @throws \Assert\AssertionFailedException
+     */
     public function insertAddress (
-        string $street,
-        string $number,
-        int $userId,
-        string $floor,
-        string $floorInformation,
-        string $province,
-        string $city,
-        string $cp,
+        Request $request,
         InsertAddress $insertAddress
     )
     {
-        $output = $insertAddress->handle(
-            new InsertAddressCommand(
-                $street,
-                $number,
-                $userId,
-                $floor,
-                $floorInformation,
-                $province,
-                $city,
-                $cp
-            )
+
+//        $output = $insertAddress->handle(
+//            new InsertAddressCommand(
+//                $request->request->get('street'),
+//                $request->request->get('number'),
+//                $request->request->get('userId'),
+//                $request->request->get('floor'),
+//                $request->request->get('floorInformation'),
+//                $request->request->get('province'),
+//                $request->request->get('city'),
+//                $request->request->get('cp')
+//            )
+//        );
+
+        $out = $request->getContent();
+
+
+        return $this->json(
+            [
+                $out
+            ]
         );
-        return $this->json([$output]);
     }
 
     public function listAddress(ListAddress $listAddress)
