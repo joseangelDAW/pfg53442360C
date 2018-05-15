@@ -23,34 +23,33 @@ use Symfony\Component\HttpFoundation\Response;
 class AddressController extends Controller
 {
     /**
-     * @param Request $request
+     * @param Request       $request
      * @param InsertAddress $insertAddress
+     *
      * @return JsonResponse
-     * @throws \Assert\AssertionFailedException
      */
     public function insertAddress(
         Request $request,
         InsertAddress $insertAddress
     ) {
 
-        $xxx = array(json_decode($request->getContent()));
-        $x = $xxx[0];
-        $arrOut = [];
+        $arrayRequest = array(json_decode($request->getContent()));
+        $item = [];
 
-        foreach ($x as $key => $value) {
-            $arrOut [$key] = $value;
+        foreach ($arrayRequest[0] as $key => $value) {
+            $item[$key] = $value;
         }
 
         $output = $insertAddress->handle(
             new InsertAddressCommand(
-                $arrOut['street'],
-                $arrOut['number'],
-                $arrOut['userId'],
-                $arrOut['floor'],
-                $arrOut['floorInformation'],
-                $arrOut['province'],
-                $arrOut['city'],
-                $arrOut['cp']
+                $item['street'],
+                $item['number'],
+                $item['userId'],
+                $item['floor'],
+                $item['floorInformation'],
+                $item['province'],
+                $item['city'],
+                $item['cp']
             )
         );
 

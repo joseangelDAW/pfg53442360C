@@ -16,19 +16,19 @@ class UpdateAddress
 {
     const OK = 'ok';
 
-	private $addressRepository;
+    private $addressRepository;
 	private $updateAddressTransform;
 	private $checkIfAddressExists;
 
 
 	public function __construct (
-		AddressRepositoryInterface $addressRepository,
-		UpdateAddressTransformInterface $updateAddressTransform,
+	    AddressRepositoryInterface $addressRepository,
+        UpdateAddressTransformInterface $updateAddressTransform,
         CheckIfAddressExists $checkIfAddressExists
 	) {
-	$this->addressRepository = $addressRepository;
-	$this->updateAddressTransform = $updateAddressTransform;
-	$this->checkIfAddressExists = $checkIfAddressExists;
+	    $this->addressRepository = $addressRepository;
+	    $this->updateAddressTransform = $updateAddressTransform;
+	    $this->checkIfAddressExists = $checkIfAddressExists;
 	}
 
 	public function handle(UpdateAddressCommand $updateAddressCommand)
