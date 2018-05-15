@@ -38,12 +38,14 @@ class UpdateAddress
 		$addressId = $updateAddressCommand->getId();
 
 		try {
-		    $addressEntity = $this->checkIfAddressExists->check($addressId);
+		    $this->checkIfAddressExists->check($addressId);
         } catch (AddressDoesNotExistException $anex) {
 		    return $output = $anex->getMessage();
         }
 
-        $addressEntity = $this->addressRepository->updateAddress(
+        $addressEntity = $this->addressRepository->findAddressById($addressId);
+
+        $this->addressRepository->updateAddress(
             $addressEntity,
             $updateAddressCommand->getStreet(),
             $updateAddressCommand->getNumber(),

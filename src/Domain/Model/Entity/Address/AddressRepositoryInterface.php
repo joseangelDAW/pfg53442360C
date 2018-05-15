@@ -22,7 +22,7 @@ interface AddressRepositoryInterface
         string $province,
         string $city,
         string $cp
-    ): ?Address;
+    ): void;
 
 
     public function listAddress(): array;
@@ -36,7 +36,7 @@ interface AddressRepositoryInterface
         string $province,
         string $city,
         string $cp
-    ): ?Address;
+    ): void;
 
     public function findUserById(int $id): ?User;
 

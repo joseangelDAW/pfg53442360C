@@ -10,3 +10,7 @@ listUser:
     path: /listUser
     controller: App\Infrastructure\Controller\UserController::listUser
 
+updateUser:
+    path: /updateUser
+    controller: App\Infrastructure\Controller\UserController::updateUser
+    methods: [POST]

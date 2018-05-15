@@ -19,7 +19,8 @@ class AddressRepository extends ServiceEntityRepository implements AddressReposi
      * @param string $province
      * @param string $city
      * @param string $cp
-     * @return Address|null
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
      */
     public function insertAddress(
         string $street,
@@ -30,7 +31,7 @@ class AddressRepository extends ServiceEntityRepository implements AddressReposi
         string $province,
         string $city,
         string $cp
-    ): ?Address {
+    ): void {
         $address = new Address();
         $address->setStreet($street);
         $address->setNumber($number);
@@ -41,7 +42,7 @@ class AddressRepository extends ServiceEntityRepository implements AddressReposi
         $address->setCity($city);
         $address->setCp($cp);
 
-        return $address;
+        $this->persistAndFlush($address);
     }
 
     /**
@@ -61,7 +62,8 @@ class AddressRepository extends ServiceEntityRepository implements AddressReposi
      * @param string $province
      * @param string $city
      * @param string $cp
-     * @return Address|null
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
      */
     public function updateAddress(
         Address $addressEntity,
@@ -72,7 +74,7 @@ class AddressRepository extends ServiceEntityRepository implements AddressReposi
         string $province,
         string $city,
         string $cp
-    ): ?Address {
+    ): void {
         $addressEntity->setStreet($street);
         $addressEntity->setNumber($number);
         $addressEntity->setFloor($floor);
@@ -81,7 +83,7 @@ class AddressRepository extends ServiceEntityRepository implements AddressReposi
         $addressEntity->setCity($city);
         $addressEntity->setCp($cp);
 
-        return $addressEntity;
+        $this->persistAndFlush($addressEntity);
     }
 
     /**

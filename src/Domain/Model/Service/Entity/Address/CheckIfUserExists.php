@@ -22,12 +22,14 @@ class CheckIfUserExists
         $this->userRepository = $userRepository;
     }
 
-    public function check(int $id): ?User
+    /**
+     * @param int $id
+     * @throws UserDoesNotExistException
+     */
+    public function check(int $id): void
     {
-        $output = $this->userRepository->findUserById($id);
-        if (is_null($output)) {
+        if (is_null($this->userRepository->findUserById($id))) {
             throw new UserDoesNotExistException();
         }
-        return $output;
     }
 }

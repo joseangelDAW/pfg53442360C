@@ -8,13 +8,20 @@ use Doctrine\DBAL\Schema\Schema;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-class Version20180515115147 extends AbstractMigration
+class Version20180515164657 extends AbstractMigration
 {
     public function up(Schema $schema)
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'sqlite', 'Migration can only be executed safely on \'sqlite\'.');
 
+        $this->addSql('DROP INDEX IDX_A7DD90B1F270FD45');
+        $this->addSql('CREATE TEMPORARY TABLE __temp__vaccine AS SELECT id, care_id FROM vaccine');
+        $this->addSql('DROP TABLE vaccine');
+        $this->addSql('CREATE TABLE vaccine (id INTEGER NOT NULL, care_id INTEGER NOT NULL, PRIMARY KEY(id), CONSTRAINT FK_A7DD90B1F270FD45 FOREIGN KEY (care_id) REFERENCES care (id) NOT DEFERRABLE INITIALLY IMMEDIATE)');
+        $this->addSql('INSERT INTO vaccine (id, care_id) SELECT id, care_id FROM __temp__vaccine');
+        $this->addSql('DROP TABLE __temp__vaccine');
+        $this->addSql('CREATE INDEX IDX_A7DD90B1F270FD45 ON vaccine (care_id)');
         $this->addSql('DROP INDEX IDX_D4E6F81A76ED395');
         $this->addSql('CREATE TEMPORARY TABLE __temp__address AS SELECT id, user_id, number, street, floor, floor_information, cp, province, city FROM address');
         $this->addSql('DROP TABLE address');
@@ -29,27 +36,6 @@ class Version20180515115147 extends AbstractMigration
         $this->addSql('INSERT INTO care (id, pet_id) SELECT id, pet_id FROM __temp__care');
         $this->addSql('DROP TABLE __temp__care');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_6113A845966F7FB6 ON care (pet_id)');
-        $this->addSql('DROP INDEX IDX_A70BE25CF270FD45');
-        $this->addSql('CREATE TEMPORARY TABLE __temp__feeding AS SELECT id, care_id FROM feeding');
-        $this->addSql('DROP TABLE feeding');
-        $this->addSql('CREATE TABLE feeding (id INTEGER NOT NULL, care_id INTEGER NOT NULL, PRIMARY KEY(id), CONSTRAINT FK_A70BE25CF270FD45 FOREIGN KEY (care_id) REFERENCES care (id) NOT DEFERRABLE INITIALLY IMMEDIATE)');
-        $this->addSql('INSERT INTO feeding (id, care_id) SELECT id, care_id FROM __temp__feeding');
-        $this->addSql('DROP TABLE __temp__feeding');
-        $this->addSql('CREATE INDEX IDX_A70BE25CF270FD45 ON feeding (care_id)');
-        $this->addSql('DROP INDEX IDX_EC9E4814F270FD45');
-        $this->addSql('CREATE TEMPORARY TABLE __temp__hygiene AS SELECT id, care_id FROM hygiene');
-        $this->addSql('DROP TABLE hygiene');
-        $this->addSql('CREATE TABLE hygiene (id INTEGER NOT NULL, care_id INTEGER NOT NULL, PRIMARY KEY(id), CONSTRAINT FK_EC9E4814F270FD45 FOREIGN KEY (care_id) REFERENCES care (id) NOT DEFERRABLE INITIALLY IMMEDIATE)');
-        $this->addSql('INSERT INTO hygiene (id, care_id) SELECT id, care_id FROM __temp__hygiene');
-        $this->addSql('DROP TABLE __temp__hygiene');
-        $this->addSql('CREATE INDEX IDX_EC9E4814F270FD45 ON hygiene (care_id)');
-        $this->addSql('DROP INDEX IDX_A7DD90B1F270FD45');
-        $this->addSql('CREATE TEMPORARY TABLE __temp__vaccine AS SELECT id, care_id FROM vaccine');
-        $this->addSql('DROP TABLE vaccine');
-        $this->addSql('CREATE TABLE vaccine (id INTEGER NOT NULL, care_id INTEGER NOT NULL, PRIMARY KEY(id), CONSTRAINT FK_A7DD90B1F270FD45 FOREIGN KEY (care_id) REFERENCES care (id) NOT DEFERRABLE INITIALLY IMMEDIATE)');
-        $this->addSql('INSERT INTO vaccine (id, care_id) SELECT id, care_id FROM __temp__vaccine');
-        $this->addSql('DROP TABLE __temp__vaccine');
-        $this->addSql('CREATE INDEX IDX_A7DD90B1F270FD45 ON vaccine (care_id)');
         $this->addSql('DROP INDEX IDX_E4529B85A76ED395');
         $this->addSql('CREATE TEMPORARY TABLE __temp__pet AS SELECT id, user_id, name, race, birth_date FROM pet');
         $this->addSql('DROP TABLE pet');
@@ -57,6 +43,20 @@ class Version20180515115147 extends AbstractMigration
         $this->addSql('INSERT INTO pet (id, user_id, name, race, birth_date) SELECT id, user_id, name, race, birth_date FROM __temp__pet');
         $this->addSql('DROP TABLE __temp__pet');
         $this->addSql('CREATE INDEX IDX_E4529B85A76ED395 ON pet (user_id)');
+        $this->addSql('DROP INDEX IDX_EC9E4814F270FD45');
+        $this->addSql('CREATE TEMPORARY TABLE __temp__hygiene AS SELECT id, care_id FROM hygiene');
+        $this->addSql('DROP TABLE hygiene');
+        $this->addSql('CREATE TABLE hygiene (id INTEGER NOT NULL, care_id INTEGER NOT NULL, PRIMARY KEY(id), CONSTRAINT FK_EC9E4814F270FD45 FOREIGN KEY (care_id) REFERENCES care (id) NOT DEFERRABLE INITIALLY IMMEDIATE)');
+        $this->addSql('INSERT INTO hygiene (id, care_id) SELECT id, care_id FROM __temp__hygiene');
+        $this->addSql('DROP TABLE __temp__hygiene');
+        $this->addSql('CREATE INDEX IDX_EC9E4814F270FD45 ON hygiene (care_id)');
+        $this->addSql('DROP INDEX IDX_A70BE25CF270FD45');
+        $this->addSql('CREATE TEMPORARY TABLE __temp__feeding AS SELECT id, care_id FROM feeding');
+        $this->addSql('DROP TABLE feeding');
+        $this->addSql('CREATE TABLE feeding (id INTEGER NOT NULL, care_id INTEGER NOT NULL, PRIMARY KEY(id), CONSTRAINT FK_A70BE25CF270FD45 FOREIGN KEY (care_id) REFERENCES care (id) NOT DEFERRABLE INITIALLY IMMEDIATE)');
+        $this->addSql('INSERT INTO feeding (id, care_id) SELECT id, care_id FROM __temp__feeding');
+        $this->addSql('DROP TABLE __temp__feeding');
+        $this->addSql('CREATE INDEX IDX_A70BE25CF270FD45 ON feeding (care_id)');
     }
 
     public function down(Schema $schema)

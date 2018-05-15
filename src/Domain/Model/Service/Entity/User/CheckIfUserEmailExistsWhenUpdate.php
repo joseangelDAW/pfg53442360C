@@ -2,17 +2,18 @@
 /**
  * Created by PhpStorm.
  * User: jose
- * Date: 15/05/18
- * Time: 20:12
+ * Date: 13/05/18
+ * Time: 12:42
  */
 
 namespace App\Domain\Model\Service\Entity\User;
 
-
 use App\Domain\Model\Entity\User\EmailExistsException;
+use App\Domain\Model\Entity\User\User;
 use App\Domain\Model\Entity\User\UserRepositoryInterface;
 
-class CheckIfUserEmailExists
+
+class CheckIfUserEmailExistsWhenUpdate
 {
     private $userRepository;
 
@@ -23,14 +24,16 @@ class CheckIfUserEmailExists
     }
 
     /**
+     * @param User $user
      * @param string $keyEmail
      * @param string $value
      * @throws EmailExistsException
      */
-    public function check(string $keyEmail, string $value): void
+    public function check(User $user, string $keyEmail, string $value): void
     {
         $output = $this->userRepository->findUserByKey($keyEmail, $value);
-        if (!empty($output)) {
+        $currentEmail = $this->userRepository->getValueByKey($user, $keyEmail);
+        if ($value != $currentEmail && !empty($output)) {
             throw new EmailExistsException();
         }
     }

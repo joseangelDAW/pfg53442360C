@@ -47,13 +47,14 @@ class InsertAddress
 
         $userId = $insertAddressCommand->getUserId();
         try {
-            $userEntity = $this->checkIfUserExists->check($userId);
+            $this->checkIfUserExists->check($userId);
         } catch (UserDoesNotExistException $unex) {
             return $output = $unex->getMessage();
         }
 
+        $userEntity = $this->userRepository->findUserById($userId);
 
-        $addressEntity = $this->addressRepository->insertAddress(
+        $this->addressRepository->insertAddress(
             $insertAddressCommand->getStreet(),
             $insertAddressCommand->getNumber(),
             $userEntity,
@@ -63,7 +64,6 @@ class InsertAddress
             $insertAddressCommand->getCity(),
             $insertAddressCommand->getCp()
         );
-        $this->addressRepository->persistAndFlush($addressEntity);
 
         return $output;
     }

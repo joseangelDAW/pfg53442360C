@@ -12,6 +12,8 @@ use App\Application\User\InsertUser\InsertUser;
 use App\Application\User\InsertUser\InsertUserCommand;
 use App\Application\User\ListUser\ListUser;
 use App\Application\User\ListUser\ListUserCommand;
+use App\Application\User\UpdateUser\UpdateUser;
+use App\Application\User\UpdateUser\UpdateUserCommand;
 use App\Infrastructure\Form\User\UserClass;
 use App\Infrastructure\Form\User\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -47,13 +49,6 @@ class UserController extends Controller
         );
 
         return $this->json([$output]);
-//            return $this->redirectToRoute(
-//                'success',
-//                [
-//                    'name' => $user->getName(),
-//                    'fecha_nacimiento' => $user->getBirthDate()->format('Y-m-d')
-//                ]
-//            );
         }
 
         return $this->render(
@@ -70,10 +65,36 @@ class UserController extends Controller
         return $this->json($output);
     }
 
-    /* Implementar */
-    public function updateUser ()
+    /**
+     * @param Request $request
+     * @param UpdateUser $updateUser
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @throws \Assert\AssertionFailedException
+     */
+    public function updateUser (Request $request, UpdateUser $updateUser)
     {
+        $arrayRequest = array(json_decode($request->getContent()));
+        $item = [];
 
+        foreach ($arrayRequest[0] as $key => $value) {
+            $item[$key] = $value;
+        }
+
+        $output = $updateUser->handle(
+            new UpdateUserCommand(
+                $item['id'],
+                $item['name'],
+                $item['surname'],
+                $item['nickName'],
+                $item['email']
+            )
+        );
+
+        return $this->json(
+            [
+                $output
+            ]
+        );
     }
 
     /**

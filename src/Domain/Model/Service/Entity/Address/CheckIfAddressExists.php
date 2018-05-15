@@ -31,12 +31,10 @@ class CheckIfAddressExists
      * @return Address|null
      * @throws AddressDoesNotExistException
      */
-    public function check(int $id): ?Address
+    public function check(int $id): void
     {
-        $output = $this->addressRepository->findAddressById($id);
-        if (is_null($output)) {
+        if (is_null($this->addressRepository->findAddressById($id))) {
             throw new AddressDoesNotExistException();
         }
-        return $output;
     }
 }

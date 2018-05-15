@@ -14,8 +14,8 @@ use App\Domain\Model\Entity\User\NickNameExistsException;
 use App\Domain\Model\Entity\User\UserDoesNotExistException;
 use App\Domain\Model\Entity\User\UserRepositoryInterface;
 use App\Domain\Model\Service\Entity\Address\CheckIfUserExists;
-use App\Domain\Model\Service\Entity\User\CheckIfUserEmailExists;
-use App\Domain\Model\Service\Entity\User\CheckIfUserNicknameExists;
+use App\Domain\Model\Service\Entity\User\CheckIfUserEmailExistsWhenUpdate;
+use App\Domain\Model\Service\Entity\User\CheckIfUserNicknameExistsWhenUpdate;
 
 class UpdateUser
 {
@@ -25,27 +25,27 @@ class UpdateUser
 
     private $userRepository;
     private $checkIfUserExists;
-    private $checkIfUserEmailExists;
-    private $checkIfUserNicknameExists;
+    private $checkIfUserEmailExistsWhenUpdate;
+    private $checkIfUserNicknameExistsWhenUpdate;
 
     /**
      * UpdateUser constructor.
      * @param UserRepositoryInterface $userRepository
      * @param CheckIfUserExists $checkIfUserExists
-     * @param CheckIfUserEmailExists $checkIfUserEmailExists
-     * @param CheckIfUserNicknameExists $checkIfUserNicknameExists
+     * @param CheckIfUserEmailExistsWhenUpdate $checkIfUserEmailExistsWhenUpdate
+     * @param CheckIfUserNicknameExistsWhenUpdate $checkIfUserNicknameExistsWhenUpdate
      */
     public function __construct(
         UserRepositoryInterface $userRepository,
         CheckIfUserExists $checkIfUserExists,
-        CheckIfUserEmailExists $checkIfUserEmailExists,
-        CheckIfUserNicknameExists $checkIfUserNicknameExists
+        CheckIfUserEmailExistsWhenUpdate $checkIfUserEmailExistsWhenUpdate,
+        CheckIfUserNicknameExistsWhenUpdate $checkIfUserNicknameExistsWhenUpdate
     )
     {
         $this->userRepository = $userRepository;
         $this->checkIfUserExists = $checkIfUserExists;
-        $this->checkIfUserNicknameExists = $checkIfUserNicknameExists;
-        $this->checkIfUserEmailExists = $checkIfUserEmailExists;
+        $this->checkIfUserNicknameExistsWhenUpdate = $checkIfUserNicknameExistsWhenUpdate;
+        $this->checkIfUserEmailExistsWhenUpdate = $checkIfUserEmailExistsWhenUpdate;
     }
 
     /**
@@ -63,13 +63,16 @@ class UpdateUser
         $userEmail = $updateUserCommand->getEmail();
 
         try {
-            $userEntity = $this->checkIfUserExists->check($userId);
+            $this->checkIfUserExists->check($userId);
         } catch (UserDoesNotExistException $unex) {
             return $output = $unex->getMessage();
         }
 
+        $userEntity = $this->userRepository->findUserById($userId);
+
         try {
-            $this->checkIfUserEmailExists->check(
+            $this->checkIfUserEmailExistsWhenUpdate->check(
+                $userEntity,
                 self::KEY_EMAIL,
                 $userEmail
             );
@@ -78,7 +81,8 @@ class UpdateUser
         }
 
         try {
-            $this->checkIfUserNicknameExists->check(
+            $this->checkIfUserNicknameExistsWhenUpdate->check(
+                $userEntity,
                 self::KEY_NICKNAME,
                 $userNickName
             );
@@ -86,14 +90,13 @@ class UpdateUser
             return $output = $nex->getMessage();
         }
 
-        $userEntity = $this->userRepository->updateUser(
+        $this->userRepository->updateUser(
             $userEntity,
             $userName,
             $userSurname,
             $userNickName,
             $userEmail
         );
-        $this->userRepository->persistAndFlush($userEntity);
 
         return $output;
     }

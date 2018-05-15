@@ -59,7 +59,7 @@ class InsertUser
             return $output = $nex->getMessage();
         }
 
-        $userEntity = $this->userRepository->insertUser(
+        $this->userRepository->insertUser(
             $insertUserCommand->getName(),
             $insertUserCommand->getSurname(),
             $insertUserCommand->getBirthDate(),
@@ -67,7 +67,6 @@ class InsertUser
             $insertUserCommand->getEmail(),
             $insertUserCommand->getPassword()
         );
-        $this->userRepository->persistAndFlush($userEntity);
 
         return $output;
     }

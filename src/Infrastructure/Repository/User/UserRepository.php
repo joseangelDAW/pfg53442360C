@@ -8,6 +8,15 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 class UserRepository extends ServiceEntityRepository implements UserRepositoryInterface
 {
+    /**
+     * @param string $name
+     * @param string $surname
+     * @param \DateTime $birthDate
+     * @param string $nickName
+     * @param string $email
+     * @param string $password
+     * @return User|null
+     */
     public function insertUser(
         string $name,
         string $surname,
@@ -15,7 +24,7 @@ class UserRepository extends ServiceEntityRepository implements UserRepositoryIn
         string $nickName,
         string $email,
         string $password
-    ): ?User {
+    ): void {
         $user = new User();
         $user->setName($name);
         $user->setSurname($surname);
@@ -24,7 +33,7 @@ class UserRepository extends ServiceEntityRepository implements UserRepositoryIn
         $user->setEmail($email);
         $user->setPassword(password_hash($password, PASSWORD_DEFAULT));
 
-        return $user;
+        $this->persistAndFlush($user);
     }
 
     public function listUser(): array
@@ -32,17 +41,29 @@ class UserRepository extends ServiceEntityRepository implements UserRepositoryIn
         return $this->findAll();
     }
 
+    /**
+     * @param User $user
+     * @param string $name
+     * @param string $surname
+     * @param string $nickname
+     * @param string $email
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
     public function updateUser(
         User $user,
         string $name,
         string $surname,
         string $nickname,
         string $email
-    ): ?User
+    ): void
     {
         $user->setName($name);
         $user->setSurname($surname);
         $user->setNickname($nickname);
+        $user->setEmail($email);
+
+        $this->persistAndFlush($user);
     }
 
     public function findUserById(int $id): ?User
@@ -55,6 +76,21 @@ class UserRepository extends ServiceEntityRepository implements UserRepositoryIn
         return $this->findBy([$key => $value]);
     }
 
+    public function getValueByKey(User $user, string $key): ?string
+    {
+        if ($key == 'email') {
+            return $user->getEmail();
+        }
+        if ($key == 'nickname') {
+            return $user->getNickname();
+        }
+    }
+
+    /**
+     * @param User $user
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
     public function persistAndFlush(User $user): void
     {
         $this->getEntityManager()->persist($user);

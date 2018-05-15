@@ -14,3 +14,8 @@ listAddress:
 findAddressByKey:
     path: /findAddressByKey/{key}/{value}
     controller: App\Infrastructure\Controller\AddressController::findAddressByKey
+
+updateAddress:
+    path: /updateAddress
+    controller: App\Infrastructure\Controller\AddressController::updateAddress
+    methods: [POST]
