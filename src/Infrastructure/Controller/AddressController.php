@@ -16,6 +16,7 @@ use App\Application\Address\ListAddress\ListAddressCommand;
 use App\Application\Address\ListAddressByKey\ListAddressByKey;
 use App\Application\Address\ListAddressByKey\ListAddressByKeyCommand;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -24,34 +25,38 @@ class AddressController extends Controller
     /**
      * @param Request $request
      * @param InsertAddress $insertAddress
-     * @return Response
+     * @return JsonResponse
      * @throws \Assert\AssertionFailedException
      */
-    public function insertAddress (
+    public function insertAddress(
         Request $request,
         InsertAddress $insertAddress
-    )
-    {
+    ) {
 
-//        $output = $insertAddress->handle(
-//            new InsertAddressCommand(
-//                $request->request->get('street'),
-//                $request->request->get('number'),
-//                $request->request->get('userId'),
-//                $request->request->get('floor'),
-//                $request->request->get('floorInformation'),
-//                $request->request->get('province'),
-//                $request->request->get('city'),
-//                $request->request->get('cp')
-//            )
-//        );
+        $xxx = array(json_decode($request->getContent()));
+        $x = $xxx[0];
+        $arrOut = [];
 
-        $out = $request->getContent();
+        foreach ($x as $key => $value) {
+            $arrOut [$key] = $value;
+        }
 
+        $output = $insertAddress->handle(
+            new InsertAddressCommand(
+                $arrOut['street'],
+                $arrOut['number'],
+                $arrOut['userId'],
+                $arrOut['floor'],
+                $arrOut['floorInformation'],
+                $arrOut['province'],
+                $arrOut['city'],
+                $arrOut['cp']
+            )
+        );
 
         return $this->json(
             [
-                $out
+                $output
             ]
         );
     }

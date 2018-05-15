@@ -1,4 +1,36 @@
 POST http://localhost:8000/address/insertAddress?street=Antonete Galvez&number=20&userId=2&floor=4&floorInformation=Derecha&province=Almeria&city=Albox&cp=20500
+Accept:*/*
+Cache-Control:no-cache
+
+<> 2018-05-15T111755.200.json
+
+###
+
+POST http://localhost:8000/address/insertAddress?street=Antonete Galvez&number=20&userId=2&floor=4&floorInformation=Derecha&province=Almeria&city=Albox&cp=20500
+Accept:*/*
+Cache-Control:no-cache
+
+<> 2018-05-15T100027.200.json
+
+###
+
+POST http://localhost:8000/address/insertAddress?street=Antonete Galvez&number=20&userId=2&floor=4&floorInformation=Derecha&province=Almeria&city=Albox&cp=20500
+Accept:*/*
+Cache-Control:no-cache
+
+<> 2018-05-15T095940.200.json
+
+###
+
+POST http://localhost:8000/address/insertAddress?street=Antonete Galvez&number=20&userId=2&floor=4&floorInformation=Derecha&province=Almeria&city=Albox&cp=20500
+Accept:*/*
+Cache-Control:no-cache
+
+<> 2018-05-15T094204.200.json
+
+###
+
+POST http://localhost:8000/address/insertAddress?street=Antonete Galvez&number=20&userId=2&floor=4&floorInformation=Derecha&province=Almeria&city=Albox&cp=20500
 Accept: */*
 Cache-Control: no-cache
 
