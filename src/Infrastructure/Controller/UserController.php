@@ -12,6 +12,8 @@ use App\Application\User\InsertUser\InsertUser;
 use App\Application\User\InsertUser\InsertUserCommand;
 use App\Application\User\ListUser\ListUser;
 use App\Application\User\ListUser\ListUserCommand;
+use App\Application\User\ListUserByKey\ListUserByKey;
+use App\Application\User\ListUserByKey\ListUserByKeyCommand;
 use App\Application\User\UpdateUser\UpdateUser;
 use App\Application\User\UpdateUser\UpdateUserCommand;
 use App\Infrastructure\Form\User\UserClass;
@@ -95,6 +97,21 @@ class UserController extends Controller
                 $output
             ]
         );
+    }
+
+    /**
+     * @param string $key
+     * @param string $value
+     * @param ListUserByKey $listUserByKey
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @throws \Assert\AssertionFailedException
+     */
+    public function listUserByKey(string $key, string $value, ListUserByKey $listUserByKey)
+    {
+        $output = $listUserByKey->handle(
+            new ListUserByKeyCommand($key, $value));
+
+        return $this->json([$output]);
     }
 
     /**

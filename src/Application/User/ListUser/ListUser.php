@@ -27,7 +27,7 @@ class ListUser
 
     public function handle(ListUserCommand $listUserCommand): array
     {
-        $queryOutput = $this->userRepository->listUser();
-        return $this->listUserTransform->transform($queryOutput);
+        $users = $this->userRepository->listUser();
+        return $this->listUserTransform->transform($users);
     }
 }

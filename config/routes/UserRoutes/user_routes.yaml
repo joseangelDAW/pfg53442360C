@@ -14,3 +14,7 @@ updateUser:
     path: /updateUser
     controller: App\Infrastructure\Controller\UserController::updateUser
     methods: [POST]
+
+listUserByKey:
+    path: /listUserByKey/{key}/{value}
+    controller: App\Infrastructure\Controller\UserController::listUserByKey

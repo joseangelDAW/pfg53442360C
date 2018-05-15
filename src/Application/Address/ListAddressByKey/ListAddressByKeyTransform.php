@@ -11,6 +11,10 @@ namespace App\Application\Address\ListAddressByKey;
 
 class ListAddressByKeyTransform implements ListAddressByKeyTransformInterface
 {
+    /**
+     * @param array $queryInput
+     * @return array
+     */
     public function transform(array $queryInput): array
     {
         $queryOutput = [];

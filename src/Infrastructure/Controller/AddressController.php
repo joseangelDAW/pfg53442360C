@@ -103,7 +103,7 @@ class AddressController extends Controller
         );
     }
 
-    public function findAddressByKey(string $key, string $value, ListAddressByKey $listAddressByKey)
+    public function listAddressByKey(string $key, string $value, ListAddressByKey $listAddressByKey)
     {
         $output = $listAddressByKey->handle(new ListAddressByKeyCommand($key, $value));
         return $this->json($output);

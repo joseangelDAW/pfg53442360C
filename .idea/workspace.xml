@@ -2,30 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3838c74d-3ef9-42e4-a884-7e407661a202" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.env.dist" beforeDir="false" afterPath="$PROJECT_DIR$/.env.dist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/pfg53442360C.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pfg53442360C.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/nelmio_cors.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/nelmio_cors.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes/AddressRoutes/address_routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes/AddressRoutes/address_routes.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes/UserRoutes/user_routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes/UserRoutes/user_routes.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Application/Address/InsertAddress/InsertAddress.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Address/InsertAddress/InsertAddress.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Application/Address/UpdateAddress/UpdateAddress.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Address/UpdateAddress/UpdateAddress.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Application/User/InsertUser/InsertUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/User/InsertUser/InsertUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Application/User/UpdateUser/UpdateUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/User/UpdateUser/UpdateUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Domain/Model/Entity/Address/AddressRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Model/Entity/Address/AddressRepositoryInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Domain/Model/Entity/User/UserRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Model/Entity/User/UserRepositoryInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Domain/Model/Service/Entity/Address/CheckIfAddressExists.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Model/Service/Entity/Address/CheckIfAddressExists.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Domain/Model/Service/Entity/Address/CheckIfUserExists.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Model/Service/Entity/Address/CheckIfUserExists.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Domain/Model/Service/Entity/User/CheckIfUserEmailExists.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Domain/Model/Service/Entity/User/CheckIfUserEmailExistsWhenUpdate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Application/Address/ListAddressByKey/ListAddressByKeyTransform.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/Address/ListAddressByKey/ListAddressByKeyTransform.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Application/User/ListUser/ListUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application/User/ListUser/ListUser.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Infrastructure/Controller/AddressController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Infrastructure/Controller/AddressController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Infrastructure/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Infrastructure/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Infrastructure/Migrations/Version20180515115139.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Infrastructure/Migrations/Version20180515115147.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Infrastructure/Migrations/Version20180515115220.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Infrastructure/Repository/Address/AddressRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Infrastructure/Repository/Address/AddressRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Infrastructure/Repository/User/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Infrastructure/Repository/User/UserRepository.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/httpRequests/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -82,11 +64,47 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="ListUserByKey.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Application/User/ListUserByKey/ListUserByKey.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ListAddressByKeyTransform.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Application/Address/ListAddressByKey/ListAddressByKeyTransform.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="61">
+              <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="AddressController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Infrastructure/Controller/AddressController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-82">
-              <caret line="51" column="31" selection-start-line="51" selection-start-column="31" selection-end-line="51" selection-end-column="31" />
+            <state relative-caret-position="457">
+              <caret line="107" column="41" lean-forward="true" selection-start-line="107" selection-start-column="41" selection-end-line="107" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ListAddressByKeyTransformInterface.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Application/Address/ListAddressByKey/ListAddressByKeyTransformInterface.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="address_routes.yaml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/routes/AddressRoutes/address_routes.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="69" selection-start-line="15" selection-start-column="69" selection-end-line="15" selection-end-column="69" />
             </state>
           </provider>
         </entry>
@@ -94,8 +112,8 @@
       <file leaf-file-name="UserController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Infrastructure/Controller/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="742">
-              <caret line="90" column="10" lean-forward="true" selection-start-line="90" selection-start-column="10" selection-end-line="90" selection-end-column="10" />
+            <state relative-caret-position="292">
+              <caret line="110" column="38" selection-start-line="110" selection-start-column="38" selection-end-line="110" selection-end-column="38" />
               <folding>
                 <element signature="e#6#83#0#PHP" expanded="true" />
                 <element signature="e#127#174#0#PHP" expanded="true" />
@@ -104,23 +122,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UpdateUser.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Application/User/UpdateUser/UpdateUser.php">
+      <file leaf-file-name="ListAddressByKey.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Application/Address/ListAddressByKey/ListAddressByKey.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="412">
-              <caret line="90" column="9" selection-start-line="90" selection-start-column="9" selection-end-line="90" selection-end-column="9" />
-              <folding>
-                <element signature="e#131#185#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="315">
+              <caret line="26" column="20" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="address_routes.yaml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/routes/AddressRoutes/address_routes.yaml">
+      <file leaf-file-name="ListAddressByKeyCommand.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Application/Address/ListAddressByKey/ListAddressByKeyCommand.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="18" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
+            <state relative-caret-position="240">
+              <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -128,56 +143,17 @@
       <file leaf-file-name="user_routes.yaml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/routes/UserRoutes/user_routes.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="72" lean-forward="true" selection-start-line="14" selection-start-column="72" selection-end-line="14" selection-end-column="72" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UpdateUserCommand.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Application/User/UpdateUser/UpdateUserCommand.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-518">
-              <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CheckIfUserNicknameExistsWhenUpdate.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Domain/Model/Service/Entity/User/CheckIfUserNicknameExistsWhenUpdate.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="412">
-              <caret line="37" column="50" selection-start-line="37" selection-start-column="50" selection-end-line="37" selection-end-column="50" />
-              <folding>
-                <element signature="e#136#193#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserRepositoryInterface.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Domain/Model/Entity/User/UserRepositoryInterface.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="38" column="20" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserRepository.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Infrastructure/Repository/User/UserRepository.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="467">
-              <caret line="52" column="20" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CheckIfUserNicknameExists.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Domain/Model/Service/Entity/User/CheckIfUserNicknameExists.php">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="285">
-              <caret line="25" column="38" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
+              <caret line="19" column="52" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ListUserByKeyCommand.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Application/User/ListUserByKey/ListUserByKeyCommand.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="8" column="45" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -198,10 +174,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/config/services.yaml" />
-        <option value="$PROJECT_DIR$/config/routes.yaml" />
-        <option value="$PROJECT_DIR$/src/Application/Address/InsertAddress/InsertAddressCommand.php" />
-        <option value="$PROJECT_DIR$/src/Application/User/ListAddress.php" />
         <option value="$PROJECT_DIR$/src/Application/Address/InsertAddress/InsertAddressTransform.php" />
         <option value="$PROJECT_DIR$/src/Application/User/InsertUser/InsertUserTransform.php" />
         <option value="$PROJECT_DIR$/src/Application/Address/ListAddress/ListAddressTransformInterface.php" />
@@ -210,7 +182,6 @@
         <option value="$PROJECT_DIR$/src/Infrastructure/Form/User/UserType.php" />
         <option value="$PROJECT_DIR$/src/Application/User/InsertUser/InsertUserCommand.php" />
         <option value="$PROJECT_DIR$/src/Application/User/ListUser/ListUserTransformInterface.php" />
-        <option value="$PROJECT_DIR$/src/Application/User/ListUser/ListUser.php" />
         <option value="$PROJECT_DIR$/src/Application/Address/ListAddress/ListAddressTransform.php" />
         <option value="$PROJECT_DIR$/src/Application/User/ListUser/ListUserTransform.php" />
         <option value="$PROJECT_DIR$/src/Application/Address/ListAddressByKey/ListAddressTransformInterface.php" />
@@ -228,7 +199,6 @@
         <option value="$PROJECT_DIR$/src/Application/Address/UpdateAddress/UpdateAddressTransform.php" />
         <option value="$PROJECT_DIR$/src/Application/Address/UpdateAddress/UpdateAddressCommand.php" />
         <option value="$PROJECT_DIR$/src/Domain/Model/Entity/Address/AddressDoesNotExistException.php" />
-        <option value="$PROJECT_DIR$/src/Application/Address/ListAddressByKey/ListAddressByKeyTransform.php" />
         <option value="$PROJECT_DIR$/src/Application/Address/ListAddressByKey/ListAddressByKeyCommand.php" />
         <option value="$PROJECT_DIR$/.env.dist" />
         <option value="$PROJECT_DIR$/.env" />
@@ -238,17 +208,23 @@
         <option value="$PROJECT_DIR$/src/Application/Address/UpdateAddress/UpdateAddress.php" />
         <option value="$PROJECT_DIR$/src/Domain/Model/Entity/Address/AddressRepositoryInterface.php" />
         <option value="$PROJECT_DIR$/src/Infrastructure/Repository/Address/AddressRepository.php" />
-        <option value="$PROJECT_DIR$/src/Infrastructure/Controller/AddressController.php" />
-        <option value="$PROJECT_DIR$/config/routes/AddressRoutes/address_routes.yaml" />
         <option value="$PROJECT_DIR$/config/packages/nelmio_cors.yaml" />
         <option value="$PROJECT_DIR$/src/Application/User/InsertUser/InsertUser.php" />
         <option value="$PROJECT_DIR$/src/Domain/Model/Entity/User/UserRepositoryInterface.php" />
         <option value="$PROJECT_DIR$/src/Domain/Model/Service/Entity/User/CheckIfUserEmailExists.php" />
         <option value="$PROJECT_DIR$/src/Domain/Model/Service/Entity/User/CheckIfUserNicknameExistsWhenUpdate.php" />
         <option value="$PROJECT_DIR$/src/Infrastructure/Repository/User/UserRepository.php" />
+        <option value="$PROJECT_DIR$/src/Application/User/UpdateUser/UpdateUser.php" />
+        <option value="$PROJECT_DIR$/src/Application/User/ListUserByKey/ListUserByKeyTransform.php" />
+        <option value="$PROJECT_DIR$/src/Application/User/ListUserByKey/ListUserByKeyTransformInterface.php" />
+        <option value="$PROJECT_DIR$/src/Application/Address/ListAddressByKey/ListAddressByKeyTransform.php" />
+        <option value="$PROJECT_DIR$/src/Application/User/ListUserByKey/ListUserByKey.php" />
+        <option value="$PROJECT_DIR$/src/Application/User/ListUser/ListUser.php" />
+        <option value="$PROJECT_DIR$/src/Application/User/ListUserByKey/ListUserByKeyCommand.php" />
         <option value="$PROJECT_DIR$/src/Infrastructure/Controller/UserController.php" />
         <option value="$PROJECT_DIR$/config/routes/UserRoutes/user_routes.yaml" />
-        <option value="$PROJECT_DIR$/src/Application/User/UpdateUser/UpdateUser.php" />
+        <option value="$PROJECT_DIR$/config/routes/AddressRoutes/address_routes.yaml" />
+        <option value="$PROJECT_DIR$/src/Infrastructure/Controller/AddressController.php" />
       </list>
     </option>
   </component>
@@ -410,6 +386,22 @@
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Application" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Address" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="ListAddress" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="pfg53442360c" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pfg53442360c" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Application" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Address" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="ListAddressByKey" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="pfg53442360c" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pfg53442360c" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Application" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Address" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="UpdateAddress" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -426,6 +418,22 @@
               <item name="Application" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="User" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="InsertUser" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="pfg53442360c" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pfg53442360c" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Application" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="User" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="ListUser" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="pfg53442360c" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pfg53442360c" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Application" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="User" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="ListUserByKey" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="pfg53442360c" type="b2602c69:ProjectViewProjectNode" />
@@ -638,12 +646,12 @@
       <workItem from="1526311244671" duration="5214000" />
       <workItem from="1526324971680" duration="3055000" />
       <workItem from="1526370067103" duration="9655000" />
-      <workItem from="1526402699469" duration="6315000" />
+      <workItem from="1526402699469" duration="7838000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="118629000" />
+    <option name="totallyTimeSpent" value="120152000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="50" y="0" width="1316" height="768" extended-state="6" />
@@ -716,55 +724,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Infrastructure/Form/User/UserType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="21" column="39" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Application/User/InsertUser/InsertUserCommand.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="36" column="17" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Application/User/ListUser/ListUserTransformInterface.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="13" column="56" selection-start-line="13" selection-start-column="56" selection-end-line="13" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Application/User/InsertUser/InsertUserTransform.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Application/User/ListUser/ListUser.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="29" column="52" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Application/Address/ListAddress/ListAddress.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="37">
-          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="31" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Application/User/ListUser/ListUserTransform.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="21" column="40" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Domain/Model/Entity/Pet/Pet.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="368">
@@ -776,13 +735,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Application/Address/ListAddressByKey/ListAddressByKeyTransformInterface.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
@@ -847,34 +799,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="13" column="33" lean-forward="true" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Application/Address/ListAddressByKey/ListAddressByKeyTransform.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="35" column="25" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Application/Address/ListAddressByKey/ListAddressByKey.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Application/Address/ListAddressByKey/ListAddressByKeyCommand.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="21" column="47" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Application/Address/ListAddress/ListAddressTransform.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="23" column="17" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -988,13 +912,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Application/User/InsertUser/InsertUser.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="32" column="70" selection-start-line="32" selection-start-column="70" selection-end-line="32" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Domain/Model/Service/Entity/User/CheckIfUserEmailExistsWhenUpdate.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
@@ -1019,56 +936,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Infrastructure/Controller/AddressController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-82">
-          <caret line="51" column="31" selection-start-line="51" selection-start-column="31" selection-end-line="51" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Infrastructure/Controller/UserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="742">
-          <caret line="90" column="10" lean-forward="true" selection-start-line="90" selection-start-column="10" selection-end-line="90" selection-end-column="10" />
-          <folding>
-            <element signature="e#6#83#0#PHP" expanded="true" />
-            <element signature="e#127#174#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes/AddressRoutes/address_routes.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="18" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes/UserRoutes/user_routes.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="72" lean-forward="true" selection-start-line="14" selection-start-column="72" selection-end-line="14" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Application/User/UpdateUser/UpdateUserCommand.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-518">
           <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Domain/Model/Entity/User/UserRepositoryInterface.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="38" column="20" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Infrastructure/Repository/User/UserRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="52" column="20" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -1079,6 +950,139 @@
           <folding>
             <element signature="e#131#185#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Domain/Model/Entity/User/UserRepositoryInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="48" column="20" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Infrastructure/Repository/User/UserRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="70" column="47" lean-forward="true" selection-start-line="70" selection-start-column="47" selection-end-line="70" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Application/User/ListUser/ListUserTransform.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="32" column="28" selection-start-line="20" selection-start-column="8" selection-end-line="32" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Application/Address/ListAddress/ListAddressTransform.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="23" column="17" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Application/User/ListUser/ListUserCommand.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Application/User/ListUser/ListUser.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="30" column="59" selection-start-line="30" selection-start-column="59" selection-end-line="30" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Application/User/ListUserByKey/ListUserByKeyTransformInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="13" column="56" selection-start-line="13" selection-start-column="56" selection-end-line="13" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Application/User/ListUserByKey/ListUserByKeyTransform.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="15" column="40" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Application/User/InsertUser/InsertUser.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="32" column="70" selection-start-line="32" selection-start-column="70" selection-end-line="32" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Application/User/ListUserByKey/ListUserByKeyCommand.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="8" column="45" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes/UserRoutes/user_routes.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="52" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Application/Address/ListAddressByKey/ListAddressByKeyCommand.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Application/Address/ListAddressByKey/ListAddressByKeyTransform.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="61">
+          <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Application/Address/ListAddressByKey/ListAddressByKeyTransformInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes/AddressRoutes/address_routes.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="69" selection-start-line="15" selection-start-column="69" selection-end-line="15" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Infrastructure/Controller/AddressController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="457">
+          <caret line="107" column="41" lean-forward="true" selection-start-line="107" selection-start-column="41" selection-end-line="107" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Application/Address/ListAddressByKey/ListAddressByKey.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="26" column="20" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Infrastructure/Controller/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="110" column="38" selection-start-line="110" selection-start-column="38" selection-end-line="110" selection-end-column="38" />
+          <folding>
+            <element signature="e#6#83#0#PHP" expanded="true" />
+            <element signature="e#127#174#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Application/User/ListUserByKey/ListUserByKey.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
         </state>
       </provider>
     </entry>
