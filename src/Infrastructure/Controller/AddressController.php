@@ -63,6 +63,10 @@ class AddressController extends Controller
         );
     }
 
+    /**
+     * @param ListAddress $listAddress
+     * @return JsonResponse
+     */
     public function listAddress(ListAddress $listAddress)
     {
         $output = $listAddress->handle(new ListAddressCommand());
@@ -103,6 +107,13 @@ class AddressController extends Controller
         );
     }
 
+    /**
+     * @param string $key
+     * @param string $value
+     * @param ListAddressByKey $listAddressByKey
+     * @return JsonResponse
+     * @throws \Assert\AssertionFailedException
+     */
     public function listAddressByKey(string $key, string $value, ListAddressByKey $listAddressByKey)
     {
         $output = $listAddressByKey->handle(new ListAddressByKeyCommand($key, $value));

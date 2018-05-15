@@ -61,6 +61,10 @@ class UserController extends Controller
         );
     }
 
+    /**
+     * @param ListUser $listUser
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
     public function listUser(ListUser $listUser)
     {
         $output = $listUser->handle(new ListUserCommand());
