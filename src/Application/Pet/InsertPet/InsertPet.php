@@ -2,53 +2,54 @@
 /**
  * Created by PhpStorm.
  * User: jose
- * Date: 6/05/18
- * Time: 18:51
+ * Date: 16/05/18
+ * Time: 19:35
  */
 
-namespace App\Application\Address\InsertAddress;
+namespace App\Application\Pet\InsertPet;
 
-use App\Domain\Model\Entity\Address\AddressRepositoryInterface;
+
+use App\Domain\Model\Entity\Pet\PetRepositoryInterface;
 use App\Domain\Model\Entity\User\UserDoesNotExistException;
 use App\Domain\Model\Entity\User\UserRepositoryInterface;
 use App\Domain\Model\Service\Entity\Address\CheckIfUserExists;
 
-class InsertAddress
+class InsertPet
 {
-    const OK = 'Dirección insertada';
+    const OK = 'Mascota insertada';
     const OK_CODE = 200;
 
-    private $addressRepository;
+    private $petRepository;
     private $userRepository;
     private $checkIfUserExists;
 
     /**
      * InsertAddress constructor.
-     * @param AddressRepositoryInterface $addressRepository
+     * @param PetRepositoryInterface $petRepository
      * @param UserRepositoryInterface $userRepository
      * @param CheckIfUserExists $checkIfUserExists
      */
     public function __construct(
-        AddressRepositoryInterface $addressRepository,
+        PetRepositoryInterface $petRepository,
         UserRepositoryInterface $userRepository,
         CheckIfUserExists $checkIfUserExists
 
     )
     {
-        $this->addressRepository = $addressRepository;
+        $this->petRepository = $petRepository;
         $this->userRepository = $userRepository;
         $this->checkIfUserExists = $checkIfUserExists;
     }
 
     /**
-     * @param InsertAddressCommand $insertAddressCommand
+     * @param InsertPetCommand $insertPetCommand
      * @return array
      */
-    public function handle(InsertAddressCommand $insertAddressCommand): array
+    public function handle(InsertPetCommand $insertPetCommand): array
     {
         $output = ['data' => self::OK, 'code' => self::OK_CODE];
 
-        $userId = $insertAddressCommand->getUserId();
+        $userId = $insertPetCommand->getUserId();
         try {
             $this->checkIfUserExists->check($userId);
         } catch (UserDoesNotExistException $unex) {
@@ -57,15 +58,11 @@ class InsertAddress
 
         $userEntity = $this->userRepository->findUserById($userId);
 
-        $this->addressRepository->insertAddress(
-            $insertAddressCommand->getStreet(),
-            $insertAddressCommand->getNumber(),
+        $this->petRepository->insertPet(
+            $insertPetCommand->getName(),
+            $insertPetCommand->getRace(),
             $userEntity,
-            $insertAddressCommand->getFloor(),
-            $insertAddressCommand->getFloorInformation(),
-            $insertAddressCommand->getProvince(),
-            $insertAddressCommand->getCity(),
-            $insertAddressCommand->getCp()
+            $insertPetCommand->getBirthDate()
         );
 
         return $output;

@@ -33,6 +33,11 @@ services:
         - 'App\Domain\Model\Entity\User\User'
 
     App\Infrastructure\Repository\Address\AddressRepository:
-            arguments:
-            - '@Doctrine\Common\Persistence\ManagerRegistry'
-            - 'App\Domain\Model\Entity\Address\Address'
+        arguments:
+        - '@Doctrine\Common\Persistence\ManagerRegistry'
+        - 'App\Domain\Model\Entity\Address\Address'
+
+    App\Infrastructure\Repository\Pet\PetRepository:
+        arguments:
+        - '@Doctrine\Common\Persistence\ManagerRegistry'
+        - 'App\Domain\Model\Entity\Pet\Pet'

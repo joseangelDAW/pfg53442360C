@@ -21,7 +21,8 @@ class UpdateUser
 {
     const KEY_EMAIL = 'email';
     const KEY_NICKNAME = 'nickname';
-    const OK = 'ok';
+    const OK = 'Usuario actualizado';
+    const OK_CODE = 200;
 
     private $userRepository;
     private $checkIfUserExists;
@@ -50,11 +51,11 @@ class UpdateUser
 
     /**
      * @param UpdateUserCommand $updateUserCommand
-     * @return string
+     * @return array
      */
-    public function handle(UpdateUserCommand $updateUserCommand): string
+    public function handle(UpdateUserCommand $updateUserCommand): array
     {
-        $output = self::OK;
+        $output = ['data' =>self::OK, 'code' => self::OK_CODE];
 
         $userId = $updateUserCommand->getId();
         $userName = $updateUserCommand->getName();
@@ -65,7 +66,7 @@ class UpdateUser
         try {
             $this->checkIfUserExists->check($userId);
         } catch (UserDoesNotExistException $unex) {
-            return $output = $unex->getMessage();
+            return ['data' => $unex->getMessage(), 'code' => $unex->getCode()];
         }
 
         $userEntity = $this->userRepository->findUserById($userId);
@@ -77,7 +78,7 @@ class UpdateUser
                 $userEmail
             );
         } catch (EmailExistsException $eex) {
-            return $output = $eex->getMessage();
+            return ['data' => $eex->getMessage(), 'code' => $eex->getCode()];
         }
 
         try {
@@ -87,7 +88,7 @@ class UpdateUser
                 $userNickName
             );
         } catch (NickNameExistsException $nex) {
-            return $output = $nex->getMessage();
+            return ['data' => $nex->getMessage(), 'code' => $nex->getCode()];
         }
 
         $this->userRepository->updateUser(

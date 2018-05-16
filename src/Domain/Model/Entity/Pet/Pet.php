@@ -23,7 +23,7 @@ class Pet
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Domain\Model\Entity\User\User", inversedBy="users")
+     * @ORM\ManyToOne(targetEntity="App\Domain\Model\Entity\User\User", inversedBy="pets")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
@@ -41,7 +41,7 @@ class Pet
     /**
      * @ORM\Column(type="date")
      */
-    private $birth_date;
+    private $birthDate;
 
     /**
      * @return mixed
@@ -104,15 +104,15 @@ class Pet
      */
     public function getBirthDate()
     {
-        return $this->birth_date;
+        return $this->birthDate;
     }
 
     /**
      * @param mixed $birth_date
      */
-    public function setBirthDate($birth_date): void
+    public function setBirthDate($birthDate): void
     {
-        $this->birth_date = $birth_date;
+        $this->birthDate = $birthDate;
     }
 
 

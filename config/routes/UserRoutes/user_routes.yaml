@@ -5,6 +5,7 @@ success:
 insertUser:
     path: /insertUser
     controller: App\Infrastructure\Controller\UserController::insertUser
+    methods: [POST]
 
 listUser:
     path: /listUser

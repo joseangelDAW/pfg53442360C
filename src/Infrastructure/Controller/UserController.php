@@ -16,9 +16,9 @@ use App\Application\User\ListUserByKey\ListUserByKey;
 use App\Application\User\ListUserByKey\ListUserByKeyCommand;
 use App\Application\User\UpdateUser\UpdateUser;
 use App\Application\User\UpdateUser\UpdateUserCommand;
-use App\Infrastructure\Form\User\UserClass;
-use App\Infrastructure\Form\User\UserType;
+use App\Infrastructure\Service\ReactRequestTransform;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -27,38 +27,28 @@ class UserController extends Controller
     /**
      * @param Request $request
      * @param InsertUser $insertUser
-     * @return Response
+     * @param ReactRequestTransform $reactRequestTransform
+     * @return JsonResponse
      * @throws \Assert\AssertionFailedException
      */
-    public function insertUser(Request $request, InsertUser $insertUser)
-    {
-        $user = new UserClass();
-        $form = $this->createForm(UserType::class, $user);
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+    public function insertUser(
+        Request $request,
+        InsertUser $insertUser,
+        ReactRequestTransform $reactRequestTransform
+    ) {
+        $item = $reactRequestTransform->transform($request);
 
         $output = $insertUser->handle(
             new InsertUserCommand(
-                $user->getName(),
-                $user->getSurname(),
-                $user->getBirthDate(),
-                $user->getNickname(),
-                $user->getEmail(),
-                $user->getPassword()
+                $item['name'],
+                $item['surname'],
+                $item['birthDate'],
+                $item['nickName'],
+                $item['email'],
+                $item['password']
             )
         );
-
-        return $this->json([$output]);
-        }
-
-        return $this->render(
-            'user/insertUser.html.twig',
-            [
-                'form' => $form->createView()
-            ]
-        );
+        return new JsonResponse($output['data'], $output['code']);
     }
 
     /**
@@ -74,17 +64,17 @@ class UserController extends Controller
     /**
      * @param Request $request
      * @param UpdateUser $updateUser
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @param ReactRequestTransform $reactRequestTransform
+     * @return JsonResponse
      * @throws \Assert\AssertionFailedException
      */
-    public function updateUser (Request $request, UpdateUser $updateUser)
-    {
-        $arrayRequest = array(json_decode($request->getContent()));
-        $item = [];
+    public function updateUser (
+        Request $request,
+        UpdateUser $updateUser,
+        ReactRequestTransform $reactRequestTransform
+    ) {
 
-        foreach ($arrayRequest[0] as $key => $value) {
-            $item[$key] = $value;
-        }
+        $item = $reactRequestTransform->transform($request);
 
         $output = $updateUser->handle(
             new UpdateUserCommand(
@@ -96,25 +86,20 @@ class UserController extends Controller
             )
         );
 
-        return $this->json(
-            [
-                $output
-            ]
-        );
+        return new JsonResponse($output['data'], $output['code']);
     }
 
     /**
      * @param string $key
      * @param string $value
      * @param ListUserByKey $listUserByKey
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @return JsonResponse
      * @throws \Assert\AssertionFailedException
      */
     public function listUserByKey(string $key, string $value, ListUserByKey $listUserByKey)
     {
         $output = $listUserByKey->handle(
             new ListUserByKeyCommand($key, $value));
-
         return $this->json([$output]);
     }
 

@@ -14,7 +14,8 @@ use App\Domain\Model\Service\Entity\Address\CheckIfAddressExists;
 
 class UpdateAddress
 {
-    const OK = 'ok';
+    const OK = 'Dirección actualizada';
+    const OK_CODE = 200;
 
     private $addressRepository;
 	private $updateAddressTransform;
@@ -33,14 +34,14 @@ class UpdateAddress
 
 	public function handle(UpdateAddressCommand $updateAddressCommand)
 	{
-	    $output = self::OK;
+	    $output = ['data' => self::OK, 'code' => self::OK_CODE];
 
 		$addressId = $updateAddressCommand->getId();
 
 		try {
 		    $this->checkIfAddressExists->check($addressId);
         } catch (AddressDoesNotExistException $anex) {
-		    return $output = $anex->getMessage();
+		    return [ 'data' => $anex->getMessage(), 'code' => $anex->getCode() ];
         }
 
         $addressEntity = $this->addressRepository->findAddressById($addressId);

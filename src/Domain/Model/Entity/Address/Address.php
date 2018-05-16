@@ -30,7 +30,7 @@ class Address
     private $number;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Domain\Model\Entity\User\User", inversedBy="users")
+     * @ORM\ManyToOne(targetEntity="App\Domain\Model\Entity\User\User", inversedBy="addresses")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;

@@ -14,6 +14,7 @@ class AddressDoesNotExistException extends \Exception
     public function __construct()
     {
         $message = 'La dirección no existe';
-        parent::__construct($message);
+        $code = 404;
+        parent::__construct($message, $code);
     }
 }

@@ -9,6 +9,7 @@
 namespace App\Application\Address\InsertAddress;
 
 
+use Assert\Assert;
 use Assert\Assertion;
 
 class InsertAddressCommand
@@ -50,6 +51,7 @@ class InsertAddressCommand
         Assertion::notBlank($number);
         Assertion::string($number);
         Assertion::notBlank($userId);
+        Assertion::numeric($userId);
         Assertion::notBlank($floor);
         Assertion::string($floor);
         Assertion::notBlank($floorInformation);

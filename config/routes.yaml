@@ -9,3 +9,7 @@ user:
 address:
     resource: 'routes/AddressRoutes/address_routes.yaml'
     prefix: /address
+
+pet:
+    resource: 'routes/PetRoutes/pet_routes.yaml'
+    prefix: /pet

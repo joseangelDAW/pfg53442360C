@@ -15,7 +15,8 @@ class UserRepository extends ServiceEntityRepository implements UserRepositoryIn
      * @param string $nickName
      * @param string $email
      * @param string $password
-     * @return User|null
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
      */
     public function insertUser(
         string $name,

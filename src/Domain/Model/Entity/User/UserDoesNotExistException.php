@@ -13,6 +13,7 @@ class UserDoesNotExistException extends \Exception
     public function __construct()
     {
         $message = 'El usuario no existe';
-        parent::__construct($message);
+        $code = 404;
+        parent::__construct($message, $code);
     }
 }

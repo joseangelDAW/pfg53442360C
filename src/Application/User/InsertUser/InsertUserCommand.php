@@ -10,6 +10,7 @@ namespace App\Application\User\InsertUser;
 
 
 use Assert\Assertion;
+use DateTime;
 use Symfony\Component\Validator\Constraints\Date;
 
 class InsertUserCommand
@@ -34,7 +35,7 @@ class InsertUserCommand
     public function __construct(
         string $name,
         string $surname,
-        \DateTime $birthDate,
+        string $birthDate,
         string $nickName,
         string $email,
         string $password
@@ -45,7 +46,7 @@ class InsertUserCommand
         Assertion::notBlank($surname);
         Assertion::string($surname);
         Assertion::notBlank($birthDate);
-//        Assertion::date($birthDate);
+        Assertion::string($birthDate);
         Assertion::notBlank($email);
         Assertion::string($email);
         Assertion::notBlank($password);
@@ -80,7 +81,7 @@ class InsertUserCommand
      */
     public function getBirthDate(): \DateTime
     {
-        return $this->birthDate;
+        return DateTime::createFromFormat('Y-m-d', $this->birthDate);
     }
 
     /**

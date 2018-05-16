@@ -14,6 +14,7 @@ class EmailExistsException extends \Exception
     public function __construct()
     {
         $message = 'El email introducido ya existe';
-        parent::__construct($message);
+        $code = 409;
+        parent::__construct($message, $code);
     }
 }

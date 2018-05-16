@@ -18,6 +18,10 @@ class InsertUser
 {
     const KEY_EMAIL = 'email';
     const KEY_NICKNAME = 'nickname';
+
+    const OK = 'Usuario insertado';
+    const OK_CODE = 200;
+
     private $userRepository;
     private $checkIfUserEmailExists;
     private $checkIfUserNicknameExists;
@@ -35,20 +39,11 @@ class InsertUser
 
     /**
      * @param InsertUserCommand $insertUserCommand
-     * @return string
+     * @return array
      */
-    public function handle(InsertUserCommand $insertUserCommand): string
+    public function handle(InsertUserCommand $insertUserCommand): array
     {
-        $output = 'ok';
-
-        try {
-            $this->checkIfUserEmailExists->check(
-                self::KEY_EMAIL,
-                $insertUserCommand->getEmail()
-            );
-        } catch (EmailExistsException $eex) {
-            return $output = $eex->getMessage();
-        }
+        $output = ['data' => self::OK, 'code' => self::OK_CODE];
 
         try {
             $this->checkIfUserNicknameExists->check(
@@ -56,7 +51,16 @@ class InsertUser
                 $insertUserCommand->getNickName()
             );
         } catch (NickNameExistsException $nex) {
-            return $output = $nex->getMessage();
+            return ['data' => $nex->getMessage(), 'code' => $nex->getCode()];
+        }
+
+        try {
+            $this->checkIfUserEmailExists->check(
+                self::KEY_EMAIL,
+                $insertUserCommand->getEmail()
+            );
+        } catch (EmailExistsException $eex) {
+            return ['data' => $eex->getMessage(), 'code' => $eex->getCode()];
         }
 
         $this->userRepository->insertUser(

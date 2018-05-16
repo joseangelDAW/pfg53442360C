@@ -2,8 +2,9 @@
 
 namespace App\Domain\Model\Entity\User;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints\Date;
+use Doctrine\ORM\Mapping\OneToMany;
 
 /**
  * @ORM\Entity(repositoryClass="App\Infrastructure\Repository\User\UserRepository")
@@ -16,6 +17,16 @@ class User
      * @ORM\Column(type="integer")
      */
     private $id;
+
+    /**
+     * @OneToMany(targetEntity="App\Domain\Model\Entity\Address\Address", mappedBy="user")
+     */
+    private $addresses;
+
+    /**
+     * @OneToMany(targetEntity="App\Domain\Model\Entity\Pet\Pet", mappedBy="user")
+     */
+    private $pets;
 
     /**
      * @ORM\Column(type="string", length=25)
@@ -38,7 +49,7 @@ class User
     private $password;
 
     /**
-     * @ORM\Column(type="date"  )
+     * @ORM\Column(type="date")
      */
     private $birthDate;
 
@@ -46,6 +57,11 @@ class User
      * @ORM\Column(type="string", length=100, unique=true)
      */
     private $email;
+
+    public function __construct() {
+        $this->addresses = new ArrayCollection();
+        $this->pets = new ArrayCollection();
+    }
 
     public function getId()
     {
