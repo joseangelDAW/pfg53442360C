@@ -8,8 +8,6 @@
 
 namespace App\Domain\Model\Service\Entity\Address;
 
-
-use App\Domain\Model\Entity\Address\Address;
 use App\Domain\Model\Entity\Address\AddressDoesNotExistException;
 use App\Domain\Model\Entity\Address\AddressRepositoryInterface;
 
@@ -28,7 +26,7 @@ class CheckIfAddressExists
 
     /**
      * @param int $id
-     * @return Address|null
+     *
      * @throws AddressDoesNotExistException
      */
     public function check(int $id): void

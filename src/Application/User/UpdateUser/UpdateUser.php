@@ -8,12 +8,11 @@
 
 namespace App\Application\User\UpdateUser;
 
-
 use App\Domain\Model\Entity\User\EmailExistsException;
 use App\Domain\Model\Entity\User\NickNameExistsException;
 use App\Domain\Model\Entity\User\UserDoesNotExistException;
 use App\Domain\Model\Entity\User\UserRepositoryInterface;
-use App\Domain\Model\Service\Entity\Address\CheckIfUserExists;
+use App\Domain\Model\Service\Entity\User\CheckIfUserExists;
 use App\Domain\Model\Service\Entity\User\CheckIfUserEmailExistsWhenUpdate;
 use App\Domain\Model\Service\Entity\User\CheckIfUserNicknameExistsWhenUpdate;
 
@@ -41,8 +40,7 @@ class UpdateUser
         CheckIfUserExists $checkIfUserExists,
         CheckIfUserEmailExistsWhenUpdate $checkIfUserEmailExistsWhenUpdate,
         CheckIfUserNicknameExistsWhenUpdate $checkIfUserNicknameExistsWhenUpdate
-    )
-    {
+    ) {
         $this->userRepository = $userRepository;
         $this->checkIfUserExists = $checkIfUserExists;
         $this->checkIfUserNicknameExistsWhenUpdate = $checkIfUserNicknameExistsWhenUpdate;

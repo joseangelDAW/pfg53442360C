@@ -12,7 +12,7 @@ namespace App\Application\Pet\InsertPet;
 use App\Domain\Model\Entity\Pet\PetRepositoryInterface;
 use App\Domain\Model\Entity\User\UserDoesNotExistException;
 use App\Domain\Model\Entity\User\UserRepositoryInterface;
-use App\Domain\Model\Service\Entity\Address\CheckIfUserExists;
+use App\Domain\Model\Service\Entity\User\CheckIfUserExists;
 
 class InsertPet
 {
@@ -34,8 +34,7 @@ class InsertPet
         UserRepositoryInterface $userRepository,
         CheckIfUserExists $checkIfUserExists
 
-    )
-    {
+    ) {
         $this->petRepository = $petRepository;
         $this->userRepository = $userRepository;
         $this->checkIfUserExists = $checkIfUserExists;

@@ -2,3 +2,8 @@ insertPet:
     path: /insertPet
     controller: App\Infrastructure\Controller\PetController::insertPet
     methods: [POST]
+
+updatePet:
+    path: /updatePet
+    controller: App\Infrastructure\Controller\PetController::updatePet
+    methods: [POST]

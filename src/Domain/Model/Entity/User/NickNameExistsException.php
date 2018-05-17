@@ -8,7 +8,6 @@
 
 namespace App\Domain\Model\Entity\User;
 
-
 class NickNameExistsException extends \Exception
 {
     public function __construct()

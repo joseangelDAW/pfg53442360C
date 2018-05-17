@@ -39,6 +39,37 @@ class PetRepository extends ServiceEntityRepository implements PetRepositoryInte
     }
 
     /**
+     * @param Pet       $pet
+     * @param string    $name
+     * @param string    $race
+     * @param \Datetime $birthDate
+     *
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function updatePet(
+        Pet $pet,
+        string $name,
+        string $race,
+        \Datetime $birthDate
+    ): void {
+        $pet->setName($name);
+        $pet->setRace($race);
+        $pet->setBirthDate($birthDate);
+        $this->persistAndFlush($pet);
+    }
+
+    /**
+     * @param int $id
+     *
+     * @return Pet|null
+     */
+    public function findPetById(int $id): ?Pet
+    {
+        return $this->findOneBy(["id" => $id]);
+    }
+
+    /**
      * @param Pet $pet
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException

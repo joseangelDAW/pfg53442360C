@@ -6,10 +6,8 @@
  * Time: 12:15
  */
 
-namespace App\Domain\Model\Service\Entity\Address;
+namespace App\Domain\Model\Service\Entity\User;
 
-
-use App\Domain\Model\Entity\User\User;
 use App\Domain\Model\Entity\User\UserDoesNotExistException;
 use App\Domain\Model\Entity\User\UserRepositoryInterface;
 

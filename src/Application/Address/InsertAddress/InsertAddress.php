@@ -11,7 +11,7 @@ namespace App\Application\Address\InsertAddress;
 use App\Domain\Model\Entity\Address\AddressRepositoryInterface;
 use App\Domain\Model\Entity\User\UserDoesNotExistException;
 use App\Domain\Model\Entity\User\UserRepositoryInterface;
-use App\Domain\Model\Service\Entity\Address\CheckIfUserExists;
+use App\Domain\Model\Service\Entity\User\CheckIfUserExists;
 
 class InsertAddress
 {
@@ -33,8 +33,7 @@ class InsertAddress
         UserRepositoryInterface $userRepository,
         CheckIfUserExists $checkIfUserExists
 
-    )
-    {
+    ) {
         $this->addressRepository = $addressRepository;
         $this->userRepository = $userRepository;
         $this->checkIfUserExists = $checkIfUserExists;

@@ -16,32 +16,30 @@ class UpdateAddress
 {
     const OK = 'Dirección actualizada';
     const OK_CODE = 200;
-
     private $addressRepository;
-	private $updateAddressTransform;
-	private $checkIfAddressExists;
+    private $updateAddressTransform;
+    private $checkIfAddressExists;
 
-
-	public function __construct (
-	    AddressRepositoryInterface $addressRepository,
+    public function __construct(
+        AddressRepositoryInterface $addressRepository,
         UpdateAddressTransformInterface $updateAddressTransform,
         CheckIfAddressExists $checkIfAddressExists
-	) {
-	    $this->addressRepository = $addressRepository;
-	    $this->updateAddressTransform = $updateAddressTransform;
-	    $this->checkIfAddressExists = $checkIfAddressExists;
-	}
+    ) {
+        $this->addressRepository = $addressRepository;
+        $this->updateAddressTransform = $updateAddressTransform;
+        $this->checkIfAddressExists = $checkIfAddressExists;
+    }
 
-	public function handle(UpdateAddressCommand $updateAddressCommand)
-	{
-	    $output = ['data' => self::OK, 'code' => self::OK_CODE];
+    public function handle(UpdateAddressCommand $updateAddressCommand)
+    {
+        $output = ['data' => self::OK, 'code' => self::OK_CODE];
 
-		$addressId = $updateAddressCommand->getId();
+        $addressId = $updateAddressCommand->getId();
 
-		try {
-		    $this->checkIfAddressExists->check($addressId);
+        try {
+            $this->checkIfAddressExists->check($addressId);
         } catch (AddressDoesNotExistException $anex) {
-		    return [ 'data' => $anex->getMessage(), 'code' => $anex->getCode() ];
+            return ['data' => $anex->getMessage(), 'code' => $anex->getCode()];
         }
 
         $addressEntity = $this->addressRepository->findAddressById($addressId);
@@ -59,6 +57,5 @@ class UpdateAddress
         $this->addressRepository->persistAndFlush($addressEntity);
 
         return $output;
-	}
-
+    }
 }

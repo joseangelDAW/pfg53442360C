@@ -26,6 +26,15 @@ interface PetRepositoryInterface
         \DateTime $birthDate
     ): void;
 
+    public function findPetById(int $id): ?Pet;
+
+    public function updatePet(
+        Pet $pet,
+        string $name,
+        string $race,
+        \Datetime $birthDate
+    ): void;
+
     public function persistAndFlush(Pet $pet): void;
 
 }
