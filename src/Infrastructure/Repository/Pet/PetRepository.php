@@ -70,6 +70,17 @@ class PetRepository extends ServiceEntityRepository implements PetRepositoryInte
     }
 
     /**
+     * @param string $key
+     * @param string $value
+     *
+     * @return array
+     */
+    public function findPetByKey(string $key, string $value): array
+    {
+        return $this->findBy([$key => $value]);
+    }
+
+    /**
      * @param Pet $pet
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException

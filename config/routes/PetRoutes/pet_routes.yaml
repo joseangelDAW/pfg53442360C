@@ -7,3 +7,7 @@ updatePet:
     path: /updatePet
     controller: App\Infrastructure\Controller\PetController::updatePet
     methods: [POST]
+
+listPetByKey:
+    path: /listPetByKey
+    controller: App\Infrastructure\Controller\PetController::listPetByKey

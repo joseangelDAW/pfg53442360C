@@ -13,13 +13,13 @@ class ListAddressByKeyTransform implements ListAddressByKeyTransformInterface
 {
     /**
      * @param array $queryInput
+     *
      * @return array
      */
     public function transform(array $queryInput): array
     {
         $queryOutput = [];
-        foreach ($queryInput as $address)
-        {
+        foreach ($queryInput as $address) {
             $queryOutput [] =
                 [
                     "id" => $address->getId(),

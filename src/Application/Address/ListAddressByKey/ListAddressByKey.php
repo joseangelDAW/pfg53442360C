@@ -18,8 +18,7 @@ class ListAddressByKey
     public function __construct(
         ListAddressByKeyTransformInterface $listAddressByKeyTransform,
         AddressRepositoryInterface $addressRepository
-    )
-    {
+    ) {
         $this->listAddressByKeyTransform = $listAddressByKeyTransform;
         $this->addressRepository = $addressRepository;
     }

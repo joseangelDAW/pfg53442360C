@@ -10,13 +10,16 @@ namespace App\Infrastructure\Controller;
 
 use App\Application\Pet\InsertPet\InsertPet;
 use App\Application\Pet\InsertPet\InsertPetCommand;
+use App\Application\Pet\ListPetByKey\ListPetByKey;
+use App\Application\Pet\ListPetByKey\ListPetByKeyCommand;
 use App\Application\Pet\UpdatePet\UpdatePet;
 use App\Application\Pet\UpdatePet\UpdatePetCommand;
 use App\Infrastructure\Service\ReactRequestTransform;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
-class PetController
+class PetController extends Controller
 {
     /**
      * @param Request $request
@@ -66,5 +69,12 @@ class PetController
             )
         );
         return new JsonResponse($output['data'], $output['code']);
+    }
+
+    public function listPetByKey(
+        ListPetByKey $listPetByKey
+    ) {
+        $output = $listPetByKey->handle(new ListPetByKeyCommand('name', 'Suecia'));
+        return $this->json($output);
     }
 }
