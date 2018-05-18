@@ -35,6 +35,8 @@ interface PetRepositoryInterface
         \Datetime $birthDate
     ): void;
 
+    public function ListPet(): array;
+
     public function findPetByKey(string $key, string $value): array;
 
     public function persistAndFlush(Pet $pet): void;

@@ -9,5 +9,9 @@ updatePet:
     methods: [POST]
 
 listPetByKey:
-    path: /listPetByKey
+    path: /listPetByKey/{key}/{value}
     controller: App\Infrastructure\Controller\PetController::listPetByKey
+
+listPet:
+    path: /listPet
+    controller: App\Infrastructure\Controller\PetController::listPet

@@ -10,6 +10,8 @@ namespace App\Infrastructure\Controller;
 
 use App\Application\Pet\InsertPet\InsertPet;
 use App\Application\Pet\InsertPet\InsertPetCommand;
+use App\Application\Pet\ListPet\ListPet;
+use App\Application\Pet\ListPet\ListPetCommand;
 use App\Application\Pet\ListPetByKey\ListPetByKey;
 use App\Application\Pet\ListPetByKey\ListPetByKeyCommand;
 use App\Application\Pet\UpdatePet\UpdatePet;
@@ -47,11 +49,22 @@ class PetController extends Controller
     }
 
     /**
-     * @param Request               $request
-     * @param UpdatePet             $updatePet
-     * @param ReactRequestTransform $reactRequestTransform
-     *
+     * @param ListPet $listPet
      * @return JsonResponse
+     */
+    public function listPet(
+        ListPet $listPet
+    ) {
+        $output = $listPet->handle(new ListPetCommand());
+        return $this->json($output);
+    }
+
+    /**
+     * @param Request $request
+     * @param UpdatePet $updatePet
+     * @param ReactRequestTransform $reactRequestTransform
+     * @return JsonResponse
+     * @throws \Assert\AssertionFailedException
      */
     public function updatePet(
         Request $request,
@@ -71,10 +84,19 @@ class PetController extends Controller
         return new JsonResponse($output['data'], $output['code']);
     }
 
+    /**
+     * @param string $key
+     * @param string $value
+     * @param ListPetByKey $listPetByKey
+     * @return JsonResponse
+     * @throws \Assert\AssertionFailedException
+     */
     public function listPetByKey(
+        string $key,
+        string $value,
         ListPetByKey $listPetByKey
     ) {
-        $output = $listPetByKey->handle(new ListPetByKeyCommand('name', 'Suecia'));
+        $output = $listPetByKey->handle(new ListPetByKeyCommand($key, $value));
         return $this->json($output);
     }
 }

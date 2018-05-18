@@ -39,6 +39,14 @@ class PetRepository extends ServiceEntityRepository implements PetRepositoryInte
     }
 
     /**
+     * @return array
+     */
+    public function listPet(): array
+    {
+        return $this->findAll();
+    }
+
+    /**
      * @param Pet       $pet
      * @param string    $name
      * @param string    $race

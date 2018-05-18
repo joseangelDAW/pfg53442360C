@@ -1,23 +1,23 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: programador
+ * User: jose
  * Date: 17/05/18
- * Time: 15:13
+ * Time: 17:39
  */
 
-namespace App\Application\Pet\ListPetByKey;
+namespace App\Application\Pet\ListPet;
 
 use App\Domain\Model\Entity\Pet\Pet;
 
-class ListPetByKeyTransform implements ListPetByKeyTransformInterface
+class ListPetTransform implements ListPetTransformInterface
 {
     /**
      * @param Pet[] $queryInput
      *
      * @return array
      */
-    public function transform(array $queryInput): array
+    function transform(array $queryInput): array
     {
         $queryOutput = [];
         foreach ($queryInput as $pet) {
@@ -27,17 +27,16 @@ class ListPetByKeyTransform implements ListPetByKeyTransformInterface
                     "name" => $pet->getName(),
                     "race" => $pet->getRace(),
                     "birthDate" => $pet->getBirthDate()->format('Y-m-d'),
-                    "user"=>
+                    "user" =>
                         [
-                            "name"       => $pet->getUser()->getName(),
-                            "surname"    => $pet->getUser()->getSurname(),
+                            "name" => $pet->getUser()->getName(),
+                            "surname" => $pet->getUser()->getSurname(),
                             "birth_date" => $pet->getUser()->getBirthDate()->format('Y-m-d'),
-                            "nick_name"  => $pet->getUser()->getNickname(),
-                            "email"      => $pet->getUser()->getEmail(),
+                            "nick_name" => $pet->getUser()->getNickname(),
+                            "email" => $pet->getUser()->getEmail(),
                         ],
                 ];
         }
-
         return $queryOutput;
     }
 }
