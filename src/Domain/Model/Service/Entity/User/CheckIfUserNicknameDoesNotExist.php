@@ -2,17 +2,17 @@
 /**
  * Created by PhpStorm.
  * User: jose
- * Date: 13/05/18
- * Time: 13:03
+ * Date: 19/05/18
+ * Time: 11:28
  */
 
 namespace App\Domain\Model\Service\Entity\User;
 
 
-use App\Domain\Model\Entity\User\NickNameExistsException;
+use App\Domain\Model\Entity\User\NickNameDoesNotExistException;
 use App\Domain\Model\Entity\User\UserRepositoryInterface;
 
-class CheckIfUserNicknameExists
+class CheckIfUserNicknameDoesNotExist
 {
     private $userRepository;
 
@@ -24,13 +24,13 @@ class CheckIfUserNicknameExists
     /**
      * @param string $keyNickName
      * @param string $value
-     * @throws NickNameExistsException
+     * @throws NickNameDoesNotExistException
      */
     public function check(string $keyNickName, string $value)
     {
         $output = $this->userRepository->findUserByKey($keyNickName, $value);
-        if (!empty($output)) {
-            throw new NickNameExistsException();
+        if (empty($output)) {
+            throw new NickNameDoesNotExistException();
         }
     }
 }

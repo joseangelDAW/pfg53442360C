@@ -46,6 +46,8 @@ interface UserRepositoryInterface
 
     public function findUserById(int $id): ?User;
 
+    public function findOneUserByNickname(string $nickname): ?User;
+
     public function findUserByKey(string $key, string $value): array;
 
     public function getValueByKey(User $user, string $key): ?string;

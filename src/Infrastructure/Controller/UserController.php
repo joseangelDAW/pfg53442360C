@@ -14,6 +14,8 @@ use App\Application\User\ListUser\ListUser;
 use App\Application\User\ListUser\ListUserCommand;
 use App\Application\User\ListUserByKey\ListUserByKey;
 use App\Application\User\ListUserByKey\ListUserByKeyCommand;
+use App\Application\User\LoginUser\LoginUser;
+use App\Application\User\LoginUser\LoginUserCommand;
 use App\Application\User\UpdateUser\UpdateUser;
 use App\Application\User\UpdateUser\UpdateUserCommand;
 use App\Infrastructure\Service\ReactRequestTransform;
@@ -45,6 +47,29 @@ class UserController extends Controller
                 $item['birthDate'],
                 $item['nickName'],
                 $item['email'],
+                $item['password']
+            )
+        );
+        return new JsonResponse($output['data'], $output['code']);
+    }
+
+    /**
+     * @param Request $request
+     * @param LoginUser $loginUser
+     * @param ReactRequestTransform $reactRequestTransform
+     * @return JsonResponse
+     * @throws \Assert\AssertionFailedException
+     */
+    public function loginUser(
+        Request $request,
+        LoginUser $loginUser,
+        ReactRequestTransform $reactRequestTransform
+    ) {
+        $item = $reactRequestTransform->transform($request);
+
+        $output = $loginUser->handle(
+            new LoginUserCommand(
+                $item['nickname'],
                 $item['password']
             )
         );

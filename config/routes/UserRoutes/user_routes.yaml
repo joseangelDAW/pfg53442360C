@@ -7,6 +7,11 @@ insertUser:
     controller: App\Infrastructure\Controller\UserController::insertUser
     methods: [POST]
 
+loginUser:
+    path: /loginUser
+    controller: App\Infrastructure\Controller\UserController::loginUser
+    methods: [POST]
+
 listUser:
     path: /listUser
     controller: App\Infrastructure\Controller\UserController::listUser
