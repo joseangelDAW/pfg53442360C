@@ -14,6 +14,7 @@ class UserConst
     const OK_LOGIN = 'Login satisfactorio';
     const OK_LOGIN_CODE = 200;
 
+    const ID = 'id';
     const EMAIL = 'email';
     const NICKNAME = 'nickname';
     const PASSWORD = 'password';

@@ -57,12 +57,24 @@ class LoginUser
 
         try {
             $this->checkLoginMatchNicknameAndPassword->check(
-                $userEntity, $password
+                $userEntity,
+                $password
             );
         } catch (LoginFailedException $lfex) {
             return ['data' => $lfex->getMessage(), 'code' => $lfex->getCode()];
         }
 
-        return (['data' => UserConst::OK_LOGIN, 'code' => UserConst::OK_LOGIN_CODE]);
+        $userId = $userEntity->getId();
+
+        return (
+            [
+                'data' =>
+                    [
+                        'message' => UserConst::OK_LOGIN,
+                        'returnValue' => $userId
+                    ],
+                'code' => UserConst::OK_LOGIN_CODE
+            ]
+        );
     }
 }
