@@ -99,4 +99,20 @@ class PetController extends Controller
         $output = $listPetByKey->handle(new ListPetByKeyCommand($key, $value));
         return $this->json($output);
     }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function uploadImage(
+        Request $request
+    ) {
+        $file = $request->getContent();
+
+        $output = "/home/jose/pfg53442360c/image.jpg";
+        $fp = fopen($output, 'w');
+        fwrite($fp, $file);
+
+        return new JsonResponse('Ok', '200');
+    }
 }

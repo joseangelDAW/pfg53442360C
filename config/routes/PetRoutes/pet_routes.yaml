@@ -15,3 +15,9 @@ listPetByKey:
 listPet:
     path: /listPet
     controller: App\Infrastructure\Controller\PetController::listPet
+
+uploadImage:
+    path: /uploadImage
+    controller: App\Infrastructure\Controller\PetController::uploadImage
+    methods: [POST]
+
