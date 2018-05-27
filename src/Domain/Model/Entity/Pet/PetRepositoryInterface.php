@@ -39,6 +39,10 @@ interface PetRepositoryInterface
 
     public function findPetByKey(string $key, string $value): array;
 
+    public function findPetsByUserId($userId): array;
+
+    public function setUrlPetImage(int $petId, string $uri);
+
     public function persistAndFlush(Pet $pet): void;
 
 }

@@ -16,6 +16,7 @@ use App\Application\Pet\ListPetByKey\ListPetByKey;
 use App\Application\Pet\ListPetByKey\ListPetByKeyCommand;
 use App\Application\Pet\UpdatePet\UpdatePet;
 use App\Application\Pet\UpdatePet\UpdatePetCommand;
+use App\Domain\Model\Entity\Pet\PetRepositoryInterface;
 use App\Infrastructure\Service\ReactRequestTransform;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -101,18 +102,42 @@ class PetController extends Controller
     }
 
     /**
+     * @param int $id
      * @param Request $request
      * @return JsonResponse
      */
     public function uploadImage(
-        Request $request
+        int $id,
+        Request $request,
+        PetRepositoryInterface $petRepository
     ) {
+
+
         $file = $request->getContent();
 
-        $output = "/home/jose/pfg53442360c/image.jpg";
+
+        $output = "/home/jose/pfgFront/public/Uploads/".$id."image.jpg";
+
+        //unlink($output);
+
         $fp = fopen($output, 'w');
         fwrite($fp, $file);
 
+        $petRepository->setUrlPetImage($id, $output);
+
         return new JsonResponse('Ok', '200');
+    }
+
+    /**
+     * @param int $id
+     * @param PetRepositoryInterface $petRepository
+     * @return JsonResponse
+     */
+    public function listPetByUserId(
+        int $id,
+        PetRepositoryInterface $petRepository
+    ) {
+        $output = $petRepository->findPetsByUserId($id);
+        return $this->json($output);
     }
 }

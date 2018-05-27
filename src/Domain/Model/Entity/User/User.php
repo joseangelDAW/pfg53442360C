@@ -151,6 +151,14 @@ class User
     /**
      * @return mixed
      */
+    public function getPets()
+    {
+        return $this->pets;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getEmail()
     {
         return $this->email;

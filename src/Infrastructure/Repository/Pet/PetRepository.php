@@ -89,6 +89,40 @@ class PetRepository extends ServiceEntityRepository implements PetRepositoryInte
     }
 
     /**
+     * @param $userId
+     * @return array
+     * @throws \Doctrine\DBAL\DBALException
+     */
+    public function findPetsByUserId($userId): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+        SELECT * FROM pet p
+        WHERE p.user_id = :id
+        ';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['id' => $userId]);
+
+        // returns an array of arrays (i.e. a raw data set)
+        return $stmt->fetchAll();
+    }
+
+    /**
+     * @param int $petId
+     * @param string $uri
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function setUrlPetImage(int $petId, string $uri)
+    {
+        $petEntity = $this->findPetById($petId);
+        $petEntity->setImage($uri);
+
+        $this->persistAndFlush($petEntity);
+    }
+
+    /**
      * @param Pet $pet
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException

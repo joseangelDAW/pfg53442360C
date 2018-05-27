@@ -17,7 +17,12 @@ listPet:
     controller: App\Infrastructure\Controller\PetController::listPet
 
 uploadImage:
-    path: /uploadImage
+    path: /uploadImage/{id}
     controller: App\Infrastructure\Controller\PetController::uploadImage
     methods: [POST]
+
+listPetByUserId:
+    path: /listPetByUserId/{id}
+    controller: App\Infrastructure\Controller\PetController::listPetByUserId
+
 

@@ -8,7 +8,7 @@ use Doctrine\DBAL\Schema\Schema;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-class Version20180517130436 extends AbstractMigration
+class Version20180525173929 extends AbstractMigration
 {
     public function up(Schema $schema)
     {
@@ -43,6 +43,13 @@ class Version20180517130436 extends AbstractMigration
         $this->addSql('INSERT INTO hygiene (id, care_id) SELECT id, care_id FROM __temp__hygiene');
         $this->addSql('DROP TABLE __temp__hygiene');
         $this->addSql('CREATE INDEX IDX_EC9E4814F270FD45 ON hygiene (care_id)');
+        $this->addSql('DROP INDEX IDX_E4529B85A76ED395');
+        $this->addSql('CREATE TEMPORARY TABLE __temp__pet AS SELECT id, user_id, name, race, birth_date FROM pet');
+        $this->addSql('DROP TABLE pet');
+        $this->addSql('CREATE TABLE pet (id INTEGER NOT NULL, user_id INTEGER NOT NULL, name VARCHAR(25) NOT NULL COLLATE BINARY, race VARCHAR(40) NOT NULL COLLATE BINARY, birth_date DATE NOT NULL, image VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id), CONSTRAINT FK_E4529B85A76ED395 FOREIGN KEY (user_id) REFERENCES user (id) NOT DEFERRABLE INITIALLY IMMEDIATE)');
+        $this->addSql('INSERT INTO pet (id, user_id, name, race, birth_date) SELECT id, user_id, name, race, birth_date FROM __temp__pet');
+        $this->addSql('DROP TABLE __temp__pet');
+        $this->addSql('CREATE INDEX IDX_E4529B85A76ED395 ON pet (user_id)');
         $this->addSql('DROP INDEX IDX_A7DD90B1F270FD45');
         $this->addSql('CREATE TEMPORARY TABLE __temp__vaccine AS SELECT id, care_id FROM vaccine');
         $this->addSql('DROP TABLE vaccine');
@@ -50,13 +57,6 @@ class Version20180517130436 extends AbstractMigration
         $this->addSql('INSERT INTO vaccine (id, care_id) SELECT id, care_id FROM __temp__vaccine');
         $this->addSql('DROP TABLE __temp__vaccine');
         $this->addSql('CREATE INDEX IDX_A7DD90B1F270FD45 ON vaccine (care_id)');
-        $this->addSql('DROP INDEX IDX_E4529B85A76ED395');
-        $this->addSql('CREATE TEMPORARY TABLE __temp__pet AS SELECT id, user_id, name, race, birth_date FROM pet');
-        $this->addSql('DROP TABLE pet');
-        $this->addSql('CREATE TABLE pet (id INTEGER NOT NULL, user_id INTEGER NOT NULL, name VARCHAR(25) NOT NULL COLLATE BINARY, race VARCHAR(40) NOT NULL COLLATE BINARY, birth_date DATE NOT NULL, PRIMARY KEY(id), CONSTRAINT FK_E4529B85A76ED395 FOREIGN KEY (user_id) REFERENCES user (id) NOT DEFERRABLE INITIALLY IMMEDIATE)');
-        $this->addSql('INSERT INTO pet (id, user_id, name, race, birth_date) SELECT id, user_id, name, race, birth_date FROM __temp__pet');
-        $this->addSql('DROP TABLE __temp__pet');
-        $this->addSql('CREATE INDEX IDX_E4529B85A76ED395 ON pet (user_id)');
     }
 
     public function down(Schema $schema)

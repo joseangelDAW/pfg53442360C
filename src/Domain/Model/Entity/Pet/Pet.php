@@ -44,6 +44,11 @@ class Pet
     private $birthDate;
 
     /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $image;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -113,6 +118,22 @@ class Pet
     public function setBirthDate($birthDate): void
     {
         $this->birthDate = $birthDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image): void
+    {
+        $this->image = $image;
     }
 
 

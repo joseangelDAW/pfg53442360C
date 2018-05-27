@@ -27,6 +27,7 @@ class ListPetTransform implements ListPetTransformInterface
                     "name" => $pet->getName(),
                     "race" => $pet->getRace(),
                     "birthDate" => $pet->getBirthDate()->format('Y-m-d'),
+                    "image" => $pet->getImage(),
                     "user" =>
                         [
                             "name" => $pet->getUser()->getName(),

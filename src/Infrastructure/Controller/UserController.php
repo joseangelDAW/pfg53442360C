@@ -18,6 +18,7 @@ use App\Application\User\LoginUser\LoginUser;
 use App\Application\User\LoginUser\LoginUserCommand;
 use App\Application\User\UpdateUser\UpdateUser;
 use App\Application\User\UpdateUser\UpdateUserCommand;
+use App\Domain\Model\Entity\User\UserRepositoryInterface;
 use App\Infrastructure\Service\ReactRequestTransform;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -125,7 +126,7 @@ class UserController extends Controller
     {
         $output = $listUserByKey->handle(
             new ListUserByKeyCommand($key, $value));
-        return $this->json([$output]);
+        return $this->json($output);
     }
 
     /**
@@ -140,6 +141,22 @@ class UserController extends Controller
             'nombre' => $name,
             'facha_nacimiento' => $fecha_nacimiento,
         ]);
+    }
+
+
+    /**
+     * @param $id
+     * @param Request $request
+     * @param UserRepositoryInterface $userRepository
+     * @return JsonResponse
+     */
+    public function listPetsById(
+        $id,
+        Request $request,
+        UserRepositoryInterface $userRepository
+    ) {
+        $output = $userRepository->getPetsById($id);
+        return $this->json([$output]);
     }
 
 }
