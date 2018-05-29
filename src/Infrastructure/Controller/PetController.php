@@ -154,8 +154,8 @@ class PetController extends Controller
         PetRepository $petRepository
     ) {
 
-        //$output = $listPetByUserId->handle(new ListPetByUserIdCommand($id));
-        $output = $petRepository->findPetsByUserId($id);
+        $output = $listPetByUserId->handle(new ListPetByUserIdCommand($id));
+        //$output = $petRepository->findPetsByUserId($id);
 
         return $this->json($output);
     }

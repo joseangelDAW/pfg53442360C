@@ -23,12 +23,14 @@ class ListPetByUserIdTransform implements ListPetByUserIdTransformInterface
         foreach ($queryInput as $pet) {
             $queryOutput [] =
                 [
-                    "id" => $pet->getId(),
-                    "name" => $pet->getName(),
-                    "typePet" => $pet->getTypePet(),
-                    "sex" => $pet->getSex(),
-                    "race" => $pet->getRace(),
-                    "birthDate" => $pet->getBirthDate()->format('Y-m-d')
+                    "id" => $pet["id"],
+                    "userId" => $pet["user_id"],
+                    "name" => $pet["name"],
+                    "typePet" => $pet["type_pet"],
+                    "sex" => $pet["sex"],
+                    "race" => $pet["race"],
+                    "birthDate" => $pet["birth_date"],
+                    "image" => $pet["image"]
                 ];
         }
 
