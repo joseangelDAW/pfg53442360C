@@ -25,4 +25,7 @@ listPetByUserId:
     path: /listPetByUserId/{id}
     controller: App\Infrastructure\Controller\PetController::listPetByUserId
 
+listMatchedPet:
+    path: /listMatchedPet/{typePet}/{sex}/{race}
+    controller: App\Infrastructure\Controller\PetController::listMatchedPet
 

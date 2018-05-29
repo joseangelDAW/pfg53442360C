@@ -122,6 +122,34 @@ class PetRepository extends ServiceEntityRepository implements PetRepositoryInte
     }
 
     /**
+     * @param string $typePet
+     * @param string $sex
+     * @param string $race
+     * @return array
+     * @throws \Doctrine\DBAL\DBALException
+     */
+    public function findMatchedPet(string $typePet, string $sex, string $race): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = 'select u.email, p.name, p.image from user u, pet p 
+                    where u.id=p.user_id and p.type_pet=:typePet
+                    and p.sex=:sex and p.race=:race';
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(
+            [
+                'typePet' => $typePet,
+                'sex' => $sex,
+                'race' => $race
+            ]
+        );
+
+        // returns an array of arrays (i.e. a raw data set)
+        return $stmt->fetchAll();
+    }
+
+    /**
      * @param int $petId
      * @param string $uri
      * @throws \Doctrine\ORM\ORMException

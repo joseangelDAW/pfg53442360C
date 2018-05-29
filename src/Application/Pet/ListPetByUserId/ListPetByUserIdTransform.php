@@ -13,8 +13,7 @@ use App\Domain\Model\Entity\Pet\Pet;
 class ListPetByUserIdTransform implements ListPetByUserIdTransformInterface
 {
     /**
-     * @param Pet[] $queryInput
-     *
+     * @param $queryInput
      * @return array
      */
     public function transform($queryInput): array

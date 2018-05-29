@@ -10,6 +10,8 @@ namespace App\Infrastructure\Controller;
 
 use App\Application\Pet\InsertPet\InsertPet;
 use App\Application\Pet\InsertPet\InsertPetCommand;
+use App\Application\Pet\ListMatchedPet\ListMatchedPet;
+use App\Application\Pet\ListMatchedPet\ListMatchedPetCommand;
 use App\Application\Pet\ListPet\ListPet;
 use App\Application\Pet\ListPet\ListPetCommand;
 use App\Application\Pet\ListPetByKey\ListPetByKey;
@@ -141,22 +143,38 @@ class PetController extends Controller
     }
 
     /**
-     * @param int             $id
+     * @param int $id
      * @param ListPetByUserId $listPetByUserId
-     * @param PetRepository   $petRepository
-     *
      * @return JsonResponse
-     * @throws \Doctrine\DBAL\DBALException
+     * @throws \Assert\AssertionFailedException
      */
     public function listPetByUserId(
         int $id,
-        ListPetByUserId $listPetByUserId,
-        PetRepository $petRepository
+        ListPetByUserId $listPetByUserId
     ) {
 
         $output = $listPetByUserId->handle(new ListPetByUserIdCommand($id));
-        //$output = $petRepository->findPetsByUserId($id);
 
         return $this->json($output);
+    }
+
+    /**
+     * @param string $typePet
+     * @param string $sex
+     * @param string $race
+     * @param ListMatchedPet $listMatchedPet
+     * @return JsonResponse
+     * @throws \Assert\AssertionFailedException
+     */
+    public function listMatchedPet(
+        string $typePet,
+        string $sex,
+        string $race,
+        ListMatchedPet $listMatchedPet
+    ) {
+
+        $output = $listMatchedPet->handle(new ListMatchedPetCommand($typePet, $sex, $race));
+        return $this->json($output);
+
     }
 }
