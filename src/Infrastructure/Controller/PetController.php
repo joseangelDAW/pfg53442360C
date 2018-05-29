@@ -14,9 +14,12 @@ use App\Application\Pet\ListPet\ListPet;
 use App\Application\Pet\ListPet\ListPetCommand;
 use App\Application\Pet\ListPetByKey\ListPetByKey;
 use App\Application\Pet\ListPetByKey\ListPetByKeyCommand;
+use App\Application\Pet\ListPetByUserId\ListPetByUserId;
+use App\Application\Pet\ListPetByUserId\ListPetByUserIdCommand;
 use App\Application\Pet\UpdatePet\UpdatePet;
 use App\Application\Pet\UpdatePet\UpdatePetCommand;
 use App\Domain\Model\Entity\Pet\PetRepositoryInterface;
+use App\Infrastructure\Repository\Pet\PetRepository;
 use App\Infrastructure\Service\ReactRequestTransform;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -36,11 +39,14 @@ class PetController extends Controller
         InsertPet $insertPet,
         ReactRequestTransform $reactRequestTransform
     ) {
+
         $item = $reactRequestTransform->transform($request);
 
         $output = $insertPet->handle(
             new InsertPetCommand(
                 $item['name'],
+                $item['typePet'],
+                $item['sex'],
                 $item['race'],
                 $item['userId'],
                 $item['birthDate']
@@ -78,6 +84,8 @@ class PetController extends Controller
             new UpdatePetCommand(
                 $item['id'],
                 $item['name'],
+                $item['typePet'],
+                $item['sex'],
                 $item['race'],
                 $item['birthDate']
             )
@@ -102,8 +110,10 @@ class PetController extends Controller
     }
 
     /**
-     * @param int $id
-     * @param Request $request
+     * @param int                    $id
+     * @param Request                $request
+     * @param PetRepositoryInterface $petRepository
+     *
      * @return JsonResponse
      */
     public function uploadImage(
@@ -115,29 +125,38 @@ class PetController extends Controller
 
         $file = $request->getContent();
 
+        $date = date('Y-m-d h:i:s');
 
-        $output = "/home/jose/pfgFront/public/Uploads/".$id."image.jpg";
+        $output = "./Uploads/Pet/".$id."_".$date."image.jpg";
+        $urlDb = "/Uploads/Pet/".$id."_".$date."image.jpg";
 
         //unlink($output);
 
         $fp = fopen($output, 'w');
         fwrite($fp, $file);
 
-        $petRepository->setUrlPetImage($id, $output);
+        $petRepository->setUrlPetImage($id, $urlDb);
 
         return new JsonResponse('Ok', '200');
     }
 
     /**
-     * @param int $id
-     * @param PetRepositoryInterface $petRepository
+     * @param int             $id
+     * @param ListPetByUserId $listPetByUserId
+     * @param PetRepository   $petRepository
+     *
      * @return JsonResponse
+     * @throws \Doctrine\DBAL\DBALException
      */
     public function listPetByUserId(
         int $id,
-        PetRepositoryInterface $petRepository
+        ListPetByUserId $listPetByUserId,
+        PetRepository $petRepository
     ) {
+
+        //$output = $listPetByUserId->handle(new ListPetByUserIdCommand($id));
         $output = $petRepository->findPetsByUserId($id);
+
         return $this->json($output);
     }
 }

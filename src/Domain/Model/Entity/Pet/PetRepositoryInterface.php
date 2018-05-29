@@ -14,28 +14,47 @@ use App\Domain\Model\Entity\User\User;
 interface PetRepositoryInterface
 {
     /**
-     * @param string $name
-     * @param string $race
-     * @param User $user
+     * @param string    $name
+     * @param string    $typePet
+     * @param string    $sex
+     * @param string    $race
+     * @param User      $user
      * @param \DateTime $birthDate
      */
     public function insertPet(
         string $name,
+        string $typePet,
+        string $sex,
         string $race,
         User $user,
         \DateTime $birthDate
     ): void;
 
+    /**
+     * @param int $id
+     *
+     * @return Pet|null
+     */
     public function findPetById(int $id): ?Pet;
 
+    /**
+     * @param Pet       $pet
+     * @param string    $name
+     * @param string    $typePet
+     * @param string    $sex
+     * @param string    $race
+     * @param \Datetime $birthDate
+     */
     public function updatePet(
         Pet $pet,
         string $name,
+        string $typePet,
+        string $sex,
         string $race,
         \Datetime $birthDate
     ): void;
 
-    public function ListPet(): array;
+    public function listPet(): array;
 
     public function findPetByKey(string $key, string $value): array;
 

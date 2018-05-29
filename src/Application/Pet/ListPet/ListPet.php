@@ -19,8 +19,7 @@ class ListPet
     public function __construct(
         ListPetTransformInterface $listPetTransform,
         PetRepositoryInterface $petRepository
-    )
-    {
+    ) {
         $this->listPetTransform = $listPetTransform;
         $this->petRepository = $petRepository;
     }

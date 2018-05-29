@@ -8,7 +8,6 @@
 
 namespace App\Application\Pet\ListPet;
 
-
 interface ListPetTransformInterface
 {
     public function transform(array $input): array;

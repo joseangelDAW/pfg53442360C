@@ -34,6 +34,16 @@ class Pet
     private $name;
 
     /**
+     * @ORM\Column(type="string", length=25)
+     */
+    private $typePet;
+
+    /**
+     * @ORM\Column(type="string", length=25)
+     */
+    private $sex;
+
+    /**
      * @ORM\Column(type="string", length=40)
      */
     private $race;
@@ -89,6 +99,38 @@ class Pet
     }
 
     /**
+     * @param mixed $typePet
+     */
+    public function setTypePet($typePet): void
+    {
+        $this->typePet = $typePet;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTypePet()
+    {
+        return $this->typePet;
+    }
+
+    /**
+     * @param mixed $sex
+     */
+    public function setSex($sex): void
+    {
+        $this->sex = $sex;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSex()
+    {
+        return $this->sex;
+    }
+
+    /**
      * @return mixed
      */
     public function getRace()
@@ -113,7 +155,7 @@ class Pet
     }
 
     /**
-     * @param mixed $birth_date
+     * @param $birthDate
      */
     public function setBirthDate($birthDate): void
     {
@@ -135,6 +177,5 @@ class Pet
     {
         $this->image = $image;
     }
-
-
 }
+

@@ -16,21 +16,28 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 class PetRepository extends ServiceEntityRepository implements PetRepositoryInterface
 {
     /**
-     * @param string $name
-     * @param string $race
-     * @param User $user
+     * @param string    $name
+     * @param string    $typePet
+     * @param string    $sex
+     * @param string    $race
+     * @param User      $user
      * @param \DateTime $birthDate
+     *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
     public function insertPet(
         string $name,
+        string $typePet,
+        string $sex,
         string $race,
         User $user,
         \DateTime $birthDate
     ): void {
         $pet = new Pet();
         $pet->setName($name);
+        $pet->setTypePet($typePet);
+        $pet->setSex($sex);
         $pet->setRace($race);
         $pet->setUser($user);
         $pet->setBirthDate($birthDate);
@@ -49,6 +56,8 @@ class PetRepository extends ServiceEntityRepository implements PetRepositoryInte
     /**
      * @param Pet       $pet
      * @param string    $name
+     * @param string    $typePet
+     * @param string    $sex
      * @param string    $race
      * @param \Datetime $birthDate
      *
@@ -58,10 +67,14 @@ class PetRepository extends ServiceEntityRepository implements PetRepositoryInte
     public function updatePet(
         Pet $pet,
         string $name,
+        string $typePet,
+        string $sex,
         string $race,
         \Datetime $birthDate
     ): void {
         $pet->setName($name);
+        $pet->setTypePet($typePet);
+        $pet->setSex($sex);
         $pet->setRace($race);
         $pet->setBirthDate($birthDate);
         $this->persistAndFlush($pet);

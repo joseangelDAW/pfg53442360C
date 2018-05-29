@@ -14,6 +14,8 @@ use DateTime;
 class UpdatePetCommand
 {
     private $name;
+    private $typePet;
+    private $sex;
     private $race;
     private $id;
     private $birthDate;
@@ -23,6 +25,8 @@ class UpdatePetCommand
      *
      * @param int    $id
      * @param string $name
+     * @param string $type
+     * @param string $sex
      * @param string $race
      * @param string $birthDate
      *
@@ -31,11 +35,17 @@ class UpdatePetCommand
     public function __construct(
         int $id,
         string $name,
+        string $typePet,
+        string $sex,
         string $race,
         string $birthDate
     ) {
         Assertion::notBlank($name);
         Assertion::string($name);
+        Assertion::notBlank($sex);
+        Assertion::string($sex);
+        Assertion::notBlank($typePet);
+        Assertion::string($typePet);
         Assertion::notBlank($race);
         Assertion::string($race);
         Assertion::notBlank($id);
@@ -44,6 +54,8 @@ class UpdatePetCommand
         Assertion::string($birthDate);
 
         $this->name = $name;
+        $this->typePet = $typePet;
+        $this->sex = $sex;
         $this->race = $race;
         $this->id = $id;
         $this->birthDate = $birthDate;
@@ -74,6 +86,27 @@ class UpdatePetCommand
     {
         return $this->id;
     }
+
+    /**
+     * Get TypePet
+     *
+     * @return string
+     */
+    public function getTypePet(): string
+    {
+        return $this->typePet;
+    }
+
+    /**
+     * Get Sex
+     *
+     * @return string
+     */
+    public function getSex(): string
+    {
+        return $this->sex;
+    }
+
 
     /**
      * @return \DateTime

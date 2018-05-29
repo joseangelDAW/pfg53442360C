@@ -17,17 +17,25 @@ class InsertPetCommand
     private $race;
     private $userId;
     private $birthDate;
+    private $sex;
+    private $typePet;
 
     /**
      * InsertPetCommand constructor.
+     *
      * @param string $name
+     * @param string $typePet
+     * @param string $sex
      * @param string $race
-     * @param int $userId
+     * @param int    $userId
      * @param string $birthDate
+     *
      * @throws \Assert\AssertionFailedException
      */
     public function __construct(
         string $name,
+        string $typePet,
+        string $sex,
         string $race,
         int $userId,
         string $birthDate
@@ -36,12 +44,18 @@ class InsertPetCommand
         Assertion::string($name);
         Assertion::notBlank($race);
         Assertion::string($race);
+        Assertion::notBlank($sex);
+        Assertion::string($sex);
+        Assertion::notBlank($typePet);
+        Assertion::string($typePet);
         Assertion::notBlank($userId);
         Assertion::numeric($userId);
         Assertion::notBlank($birthDate);
         Assertion::string($birthDate);
 
         $this->name = $name;
+        $this->typePet = $typePet;
+        $this->sex = $sex;
         $this->race = $race;
         $this->userId = $userId;
         $this->birthDate = $birthDate;
@@ -72,12 +86,33 @@ class InsertPetCommand
     }
 
     /**
-     * @return string
+     * @return DateTime
      */
     public function getBirthDate(): \DateTime
     {
         return DateTime::createFromFormat('Y-m-d', $this->birthDate);
     }
+
+    /**
+     * Get Sex
+     *
+     * @return mixed
+     */
+    public function getSex()
+    {
+        return $this->sex;
+    }
+
+    /**
+     * Get Type
+     *
+     * @return mixed
+     */
+    public function getTypePet()
+    {
+        return $this->typePet;
+    }
+
 
 
 }

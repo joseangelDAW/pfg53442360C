@@ -56,6 +56,8 @@ class UpdatePet
         $this->petRepository->updatePet(
             $petEntity,
             $updatePetCommand->getName(),
+            $updatePetCommand->getTypePet(),
+            $updatePetCommand->getSex(),
             $updatePetCommand->getRace(),
             $updatePetCommand->getBirthDate()
         );

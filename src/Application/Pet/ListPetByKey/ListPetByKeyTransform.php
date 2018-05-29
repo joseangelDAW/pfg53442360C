@@ -25,6 +25,8 @@ class ListPetByKeyTransform implements ListPetByKeyTransformInterface
                 [
                     "id" => $pet->getId(),
                     "name" => $pet->getName(),
+                    "typePet" => $pet->getTypePet(),
+                    "sex" => $pet->getSex(),
                     "race" => $pet->getRace(),
                     "birthDate" => $pet->getBirthDate()->format('Y-m-d'),
                     "user"=>

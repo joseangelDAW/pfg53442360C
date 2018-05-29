@@ -59,6 +59,8 @@ class InsertPet
 
         $this->petRepository->insertPet(
             $insertPetCommand->getName(),
+            $insertPetCommand->getTypePet(),
+            $insertPetCommand->getSex(),
             $insertPetCommand->getRace(),
             $userEntity,
             $insertPetCommand->getBirthDate()

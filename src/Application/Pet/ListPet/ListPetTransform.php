@@ -17,7 +17,7 @@ class ListPetTransform implements ListPetTransformInterface
      *
      * @return array
      */
-    function transform(array $queryInput): array
+    public function transform(array $queryInput): array
     {
         $queryOutput = [];
         foreach ($queryInput as $pet) {
@@ -25,6 +25,8 @@ class ListPetTransform implements ListPetTransformInterface
                 [
                     "id" => $pet->getId(),
                     "name" => $pet->getName(),
+                    "typePet" => $pet->getTypePet(),
+                    "sex" => $pet->getSex(),
                     "race" => $pet->getRace(),
                     "birthDate" => $pet->getBirthDate()->format('Y-m-d'),
                     "image" => $pet->getImage(),
