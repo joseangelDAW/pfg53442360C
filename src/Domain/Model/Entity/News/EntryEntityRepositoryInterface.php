@@ -18,5 +18,10 @@ interface EntryEntityRepositoryInterface
         string $content
     ): int;
 
+    public function setUrlNewsImage(int $entryId, string $uri);
+
+    public function findNewsById(int $id): ?EntryEntity;
+
+
     public function persistAndFlush(EntryEntity $entry): void;
 }

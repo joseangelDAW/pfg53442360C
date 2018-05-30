@@ -8,8 +8,14 @@
 
 namespace App\Application\User\ListUserByKey;
 
+use App\Domain\Model\Entity\User\User;
+
 class ListUserByKeyTransform implements ListUserByKeyTransformInterface
 {
+    /**
+     * @param User[] $queryInput
+     * @return array
+     */
     public function transform(array $queryInput): array
     {
         $queryOutput = [];
@@ -21,7 +27,8 @@ class ListUserByKeyTransform implements ListUserByKeyTransformInterface
                     "surname" => $user->getSurname(),
                     "birthDate" => $user->getBirthDate()->format('Y-m-d'),
                     "nickName" => $user->getNickname(),
-                    "email" => $user->getEmail()
+                    "email" => $user->getEmail(),
+                    "role" => $user->getRole()
                 ];
         }
         return $queryOutput;

@@ -54,9 +54,16 @@ class User
     private $birthDate;
 
     /**
-     * @ORM\Column(type="string", length=100, unique=true)
+     * @ORM\Column(type="string", length=60, unique=true)
      */
     private $email;
+
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    private $role;
+
+
 
     public function __construct() {
         $this->addresses = new ArrayCollection();
@@ -171,6 +178,23 @@ class User
     {
         $this->email = $email;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * @param mixed $role
+     */
+    public function setRole($role): void
+    {
+        $this->role = $role;
+    }
+
 
 
 

@@ -12,16 +12,16 @@ interface UserRepositoryInterface
 {
     /**
      * @param string $name
-     * @param string $apellidos
-     * @param \DateTime $fechaNacimiento
+     * @param string $surname
+     * @param \DateTime $birthDate
      * @param string $nickName
      * @param string $password
      * @param string $email
      */
     public function insertUser(
         string $name,
-        string $apellidos,
-        \DateTime $fechaNacimiento,
+        string $surname,
+        \DateTime $birthDate,
         string $nickName,
         string $password,
         string $email

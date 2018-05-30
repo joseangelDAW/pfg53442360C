@@ -71,7 +71,8 @@ class UserController extends Controller
         $output = $loginUser->handle(
             new LoginUserCommand(
                 $item['nickname'],
-                $item['password']
+                $item['password'],
+                $item['role']
             )
         );
         return new JsonResponse($output['data'], $output['code']);

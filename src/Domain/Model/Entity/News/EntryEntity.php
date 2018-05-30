@@ -90,6 +90,7 @@ class EntryEntity
         return $this->image;
     }
 
+
     /**
      * Set Image
      *

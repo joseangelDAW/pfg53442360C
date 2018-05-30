@@ -27,7 +27,8 @@ class ListUserTransform implements ListUserTransformInterface
                     "surname" => $user->getSurname(),
                     "birthDate" => $user->getBirthDate()->format('Y-m-d'),
                     "nickName" => $user->getNickname(),
-                    "email" => $user->getEmail()
+                    "email" => $user->getEmail(),
+                    "role" => $user->getRole()
                 ];
         }
         return $queryOutput;

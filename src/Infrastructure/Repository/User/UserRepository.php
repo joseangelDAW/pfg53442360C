@@ -34,6 +34,7 @@ class UserRepository extends ServiceEntityRepository implements UserRepositoryIn
         $user->setNickname($nickName);
         $user->setEmail($email);
         $user->setPassword(password_hash($password, PASSWORD_DEFAULT));
+        $user->setRole("user");
 
         $this->persistAndFlush($user);
     }

@@ -112,18 +112,16 @@ class PetController extends Controller
     }
 
     /**
-     * @param int                    $id
-     * @param Request                $request
+     * @param int $id
+     * @param Request $request
      * @param PetRepositoryInterface $petRepository
-     *
      * @return JsonResponse
      */
-    public function uploadImage(
+    public function uploadPetImage(
         int $id,
         Request $request,
         PetRepositoryInterface $petRepository
     ) {
-
 
         $file = $request->getContent();
 

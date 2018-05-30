@@ -15,22 +15,28 @@ class LoginUserCommand
 {
     private $user;
     private $password;
+    private $role;
 
     /**
      * LoginUserCommand constructor.
      * @param string $user
      * @param string $password
+     * @param string $role
      * @throws \Assert\AssertionFailedException
      */
     public function __construct(
         string $user,
-        string $password
+        string $password,
+        string $role
     )
     {
         Assertion::string($user);
         Assertion::notBlank($user);
+        Assertion::string($role);
+        Assertion::notBlank($role);
         $this->user = $user;
         $this->password = $password;
+        $this->role = $role;
     }
 
     /**
@@ -48,6 +54,16 @@ class LoginUserCommand
     {
         return $this->password;
     }
+
+    /**
+     * @return string
+     */
+    public function getRole(): string
+    {
+        return $this->role;
+    }
+
+
 
 
 }

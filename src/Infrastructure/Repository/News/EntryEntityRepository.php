@@ -44,6 +44,29 @@ class EntryEntityRepository extends ServiceEntityRepository implements EntryEnti
     }
 
     /**
+     * @param int $id
+     * @return EntryEntity|null
+     */
+    public function findNewsById(int $id): ?EntryEntity
+    {
+        return $this->findOneBy(["id" => $id]);
+    }
+
+    /**
+     * @param int $entryId
+     * @param string $uri
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function setUrlNewsImage(int $entryId, string $uri)
+    {
+        $entryEntity = $this->findNewsById($entryId);
+        $entryEntity->setImage($uri);
+
+        $this->persistAndFlush($entryEntity);
+    }
+
+    /**
      * @param EntryEntity $entry
      *
      * @throws \Doctrine\ORM\ORMException
