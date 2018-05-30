@@ -58,8 +58,7 @@ class UserRepository extends ServiceEntityRepository implements UserRepositoryIn
         string $surname,
         string $nickname,
         string $email
-    ): void
-    {
+    ): void {
         $user->setName($name);
         $user->setSurname($surname);
         $user->setNickname($nickname);

@@ -41,3 +41,8 @@ services:
         arguments:
         - '@Doctrine\Common\Persistence\ManagerRegistry'
         - 'App\Domain\Model\Entity\Pet\Pet'
+
+    App\Infrastructure\Repository\News\EntryEntityRepository:
+        arguments:
+        - '@Doctrine\Common\Persistence\ManagerRegistry'
+        - 'App\Domain\Model\Entity\News\EntryEntity'

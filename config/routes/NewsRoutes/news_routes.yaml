@@ -1,0 +1,8 @@
+insertEntry:
+    path: /insertEntry
+    controller: App\Infrastructure\Controller\NewsController:insertEntry
+    methods: [POST]
+
+listEntries:
+    path: /listEntries
+    controller: App\Infrastructure\Controller\NewsController:listEntries

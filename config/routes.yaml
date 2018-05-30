@@ -13,3 +13,7 @@ address:
 pet:
     resource: 'routes/PetRoutes/pet_routes.yaml'
     prefix: /pet
+
+news:
+    resource: 'routes/NewsRoutes/news_routes.yaml'
+    prefix: /news

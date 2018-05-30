@@ -8,20 +8,13 @@ use Doctrine\DBAL\Schema\Schema;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-class Version20180529121728 extends AbstractMigration
+class Version20180530074923 extends AbstractMigration
 {
     public function up(Schema $schema)
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'sqlite', 'Migration can only be executed safely on \'sqlite\'.');
 
-        $this->addSql('DROP INDEX IDX_E4529B85A76ED395');
-        $this->addSql('CREATE TEMPORARY TABLE __temp__pet AS SELECT id, user_id, name, race, birth_date, image, sex, type_pet FROM pet');
-        $this->addSql('DROP TABLE pet');
-        $this->addSql('CREATE TABLE pet (id INTEGER NOT NULL, user_id INTEGER NOT NULL, name VARCHAR(25) NOT NULL COLLATE BINARY, race VARCHAR(40) NOT NULL COLLATE BINARY, birth_date DATE NOT NULL, image VARCHAR(255) DEFAULT NULL COLLATE BINARY, sex VARCHAR(25) NOT NULL COLLATE BINARY, type_pet VARCHAR(25) NOT NULL COLLATE BINARY, PRIMARY KEY(id), CONSTRAINT FK_E4529B85A76ED395 FOREIGN KEY (user_id) REFERENCES user (id) NOT DEFERRABLE INITIALLY IMMEDIATE)');
-        $this->addSql('INSERT INTO pet (id, user_id, name, race, birth_date, image, sex, type_pet) SELECT id, user_id, name, race, birth_date, image, sex, type_pet FROM __temp__pet');
-        $this->addSql('DROP TABLE __temp__pet');
-        $this->addSql('CREATE INDEX IDX_E4529B85A76ED395 ON pet (user_id)');
         $this->addSql('DROP INDEX IDX_D4E6F81A76ED395');
         $this->addSql('CREATE TEMPORARY TABLE __temp__address AS SELECT id, user_id, number, street, floor, floor_information, cp, province, city FROM address');
         $this->addSql('DROP TABLE address');
@@ -57,6 +50,13 @@ class Version20180529121728 extends AbstractMigration
         $this->addSql('INSERT INTO vaccine (id, care_id) SELECT id, care_id FROM __temp__vaccine');
         $this->addSql('DROP TABLE __temp__vaccine');
         $this->addSql('CREATE INDEX IDX_A7DD90B1F270FD45 ON vaccine (care_id)');
+        $this->addSql('DROP INDEX IDX_E4529B85A76ED395');
+        $this->addSql('CREATE TEMPORARY TABLE __temp__pet AS SELECT id, user_id, name, type_pet, sex, race, birth_date, image FROM pet');
+        $this->addSql('DROP TABLE pet');
+        $this->addSql('CREATE TABLE pet (id INTEGER NOT NULL, user_id INTEGER NOT NULL, name VARCHAR(25) NOT NULL COLLATE BINARY, type_pet VARCHAR(25) NOT NULL COLLATE BINARY, sex VARCHAR(25) NOT NULL COLLATE BINARY, race VARCHAR(40) NOT NULL COLLATE BINARY, birth_date DATE NOT NULL, image VARCHAR(255) DEFAULT NULL COLLATE BINARY, PRIMARY KEY(id), CONSTRAINT FK_E4529B85A76ED395 FOREIGN KEY (user_id) REFERENCES user (id) NOT DEFERRABLE INITIALLY IMMEDIATE)');
+        $this->addSql('INSERT INTO pet (id, user_id, name, type_pet, sex, race, birth_date, image) SELECT id, user_id, name, type_pet, sex, race, birth_date, image FROM __temp__pet');
+        $this->addSql('DROP TABLE __temp__pet');
+        $this->addSql('CREATE INDEX IDX_E4529B85A76ED395 ON pet (user_id)');
     }
 
     public function down(Schema $schema)

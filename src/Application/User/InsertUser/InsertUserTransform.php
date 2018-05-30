@@ -8,7 +8,6 @@
 
 namespace App\Application\User\InsertUser;
 
-
 class InsertUserTransform implements InsertUserTransformInterface
 {
 

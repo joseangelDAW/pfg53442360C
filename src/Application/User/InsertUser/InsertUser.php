@@ -30,8 +30,7 @@ class InsertUser
         UserRepositoryInterface $userRepository,
         CheckIfUserEmailExists $checkIfUserEmailExists,
         CheckIfUserNicknameExists $checkIfUserNicknameExists
-    )
-    {
+    ) {
         $this->userRepository = $userRepository;
         $this->checkIfUserEmailExists = $checkIfUserEmailExists;
         $this->checkIfUserNicknameExists = $checkIfUserNicknameExists;
