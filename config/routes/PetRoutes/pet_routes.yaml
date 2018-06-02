@@ -29,3 +29,7 @@ listMatchedPet:
     path: /listMatchedPet/{typePet}/{sex}/{race}
     controller: App\Infrastructure\Controller\PetController::listMatchedPet
 
+sendEmailMatchedPet:
+    path: /sendEmailMatchedPet/{name}
+    controller: App\Infrastructure\Controller\PetController::sendEmailMatchedPet
+

@@ -33,6 +33,11 @@ class EntryEntity
     private $content;
 
     /**
+     * @ORM\Column(type="date")
+     */
+    private $dateEntry;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -105,7 +110,19 @@ class EntryEntity
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getDateEntry()
+    {
+        return $this->dateEntry;
+    }
 
-
-
+    /**
+     * @param mixed $dateEntry
+     */
+    public function setDateEntry($dateEntry): void
+    {
+        $this->dateEntry = $dateEntry;
+    }
 }

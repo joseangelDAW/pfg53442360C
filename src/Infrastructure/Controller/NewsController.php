@@ -39,11 +39,6 @@ class NewsController extends Controller
             $item['content']
         ));
 
-        /*$output = $insertNews->handle(new InsertNewsCommand(
-            $request->request->get("title"),
-            $request->request->get("content")
-        ));*/
-
         return $this->json($output);
     }
 

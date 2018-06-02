@@ -22,6 +22,5 @@ interface EntryEntityRepositoryInterface
 
     public function findNewsById(int $id): ?EntryEntity;
 
-
     public function persistAndFlush(EntryEntity $entry): void;
 }

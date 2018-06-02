@@ -175,4 +175,30 @@ class PetController extends Controller
         return $this->json($output);
 
     }
+
+    /**
+     * @param $name
+     * @param \Swift_Mailer $mailer
+     * @return JsonResponse
+     */
+    public function sendEmailMatchedPet($name, \Swift_Mailer $mailer)
+    {
+        $message = (new \Swift_Message('Hello Email'))
+            ->setFrom('joseangel@jose.com')
+            ->setTo('ochaita@gmail.com')
+            ->setBody(
+                $this->renderView(
+                    'pet/emailMatchedPet.twig',
+                    ['name' => $name]
+                ),
+                'text/html'
+            )
+        ;
+
+        //dump($message->toString());
+
+        $mailer->send($message);
+
+        return new JsonResponse(["Mensaje enviado"]);
+    }
 }

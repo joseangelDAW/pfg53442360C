@@ -10,6 +10,7 @@ namespace App\Infrastructure\Repository\News;
 
 use App\Domain\Model\Entity\News\EntryEntity;
 use App\Domain\Model\Entity\News\EntryEntityRepositoryInterface;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 class EntryEntityRepository extends ServiceEntityRepository implements EntryEntityRepositoryInterface
@@ -37,6 +38,7 @@ class EntryEntityRepository extends ServiceEntityRepository implements EntryEnti
         $entry = new EntryEntity();
         $entry->setTitle($title);
         $entry->setContent($content);
+        $entry->setDateEntry(new DateTime('now'));
 
         $this->persistAndFlush($entry);
 

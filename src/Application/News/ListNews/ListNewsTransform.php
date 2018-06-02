@@ -25,7 +25,8 @@ class ListNewsTransform implements ListNewsTransformInterface
                 [
                     "title"   => $entryEntity->getTitle(),
                     "image"   => $entryEntity->getImage(),
-                    "content" => $entryEntity->getContent()
+                    "content" => $entryEntity->getContent(),
+                    "dateNews" => $entryEntity->getDateEntry()->format('d-m-Y')
                 ];
         }
 
