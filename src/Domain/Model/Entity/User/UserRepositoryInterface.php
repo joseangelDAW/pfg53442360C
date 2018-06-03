@@ -17,6 +17,7 @@ interface UserRepositoryInterface
      * @param string $nickName
      * @param string $password
      * @param string $email
+     * @return int
      */
     public function insertUser(
         string $name,
@@ -25,7 +26,7 @@ interface UserRepositoryInterface
         string $nickName,
         string $password,
         string $email
-    ): void;
+    ): int;
 
     public function listUser(): array;
 

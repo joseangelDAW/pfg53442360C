@@ -28,3 +28,8 @@ listUserByKey:
 listPetsById:
     path: /listPetsById/{id}
     controller: App\Infrastructure\Controller\UserController::listPetsById
+
+sendEmailWhenRegistered:
+    path: /sendEmailWhenRegistered
+    controller: App\Infrastructure\Controller\UserController::sendEmailWhenRegistered
+    methods: [POST]

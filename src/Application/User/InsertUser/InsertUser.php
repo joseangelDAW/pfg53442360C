@@ -42,7 +42,6 @@ class InsertUser
      */
     public function handle(InsertUserCommand $insertUserCommand): array
     {
-        $output = ['data' => self::OK, 'code' => self::OK_CODE];
 
         try {
             $this->checkIfUserNicknameExists->check(
@@ -62,7 +61,7 @@ class InsertUser
             return ['data' => $eex->getMessage(), 'code' => $eex->getCode()];
         }
 
-        $this->userRepository->insertUser(
+        $userId = $this->userRepository->insertUser(
             $insertUserCommand->getName(),
             $insertUserCommand->getSurname(),
             $insertUserCommand->getBirthDate(),
@@ -71,6 +70,11 @@ class InsertUser
             $insertUserCommand->getPassword()
         );
 
-        return $output;
+        return [
+            "data" => self::OK,
+            "code" => self::OK_CODE,
+            "message" => "Usuario insertado",
+            "returnValue" => $userId
+        ];
     }
 }

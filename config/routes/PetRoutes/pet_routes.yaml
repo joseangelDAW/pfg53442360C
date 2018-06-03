@@ -30,6 +30,7 @@ listMatchedPet:
     controller: App\Infrastructure\Controller\PetController::listMatchedPet
 
 sendEmailMatchedPet:
-    path: /sendEmailMatchedPet/{name}
+    path: /sendEmailMatchedPet
     controller: App\Infrastructure\Controller\PetController::sendEmailMatchedPet
+    methods: [POST]
 

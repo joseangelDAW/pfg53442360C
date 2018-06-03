@@ -21,6 +21,7 @@ use App\Application\Pet\ListPetByUserId\ListPetByUserIdCommand;
 use App\Application\Pet\UpdatePet\UpdatePet;
 use App\Application\Pet\UpdatePet\UpdatePetCommand;
 use App\Domain\Model\Entity\Pet\PetRepositoryInterface;
+use App\Domain\Model\Entity\User\UserRepositoryInterface;
 use App\Infrastructure\Repository\Pet\PetRepository;
 use App\Infrastructure\Service\ReactRequestTransform;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -137,7 +138,7 @@ class PetController extends Controller
 
         $petRepository->setUrlPetImage($id, $urlDb);
 
-        return new JsonResponse('Ok', '200');
+        return new JsonResponse('Imagen enviada con éxito');
     }
 
     /**
@@ -177,28 +178,45 @@ class PetController extends Controller
     }
 
     /**
-     * @param $name
+     * @param Request $request
+     * @param ReactRequestTransform $reactRequestTransform
      * @param \Swift_Mailer $mailer
+     * @param UserRepositoryInterface $userRepository
      * @return JsonResponse
      */
-    public function sendEmailMatchedPet($name, \Swift_Mailer $mailer)
-    {
-        $message = (new \Swift_Message('Hello Email'))
-            ->setFrom('joseangel@jose.com')
-            ->setTo('ochaita@gmail.com')
+    public function sendEmailMatchedPet(
+        Request $request,
+        ReactRequestTransform $reactRequestTransform,
+        \Swift_Mailer $mailer,
+        UserRepositoryInterface $userRepository
+    ) {
+        $item = $reactRequestTransform->transform($request);
+
+        $userId = $item['userId'];
+        $receiverEmail = $item['receiverEmail'];
+        $petName = $item['petName'];
+
+        $userSender = $userRepository->findUserById($userId);
+        $senderEmail = $userSender->getEmail();
+
+        $message = (new \Swift_Message('Solicitud de contacto para tu mascota'))
+            ->setFrom('noreply@mascotas.com')
+            ->setTo($receiverEmail)
             ->setBody(
                 $this->renderView(
                     'pet/emailMatchedPet.twig',
-                    ['name' => $name]
+                    [
+                        'senderEmail' => $senderEmail,
+                        'receiverEmail' => $receiverEmail,
+                        'petName' => $petName
+                    ]
                 ),
                 'text/html'
             )
         ;
 
-        //dump($message->toString());
-
         $mailer->send($message);
 
-        return new JsonResponse(["Mensaje enviado"]);
+        return new JsonResponse(["Email enviado con éxito"]);
     }
 }

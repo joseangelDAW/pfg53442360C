@@ -51,7 +51,7 @@ class UserController extends Controller
                 $item['password']
             )
         );
-        return new JsonResponse($output['data'], $output['code']);
+        return $this->json($output);
     }
 
     /**
@@ -158,6 +158,46 @@ class UserController extends Controller
     ) {
         $output = $userRepository->getPetsById($id);
         return $this->json([$output]);
+    }
+
+    /**
+     * @param Request $request
+     * @param ReactRequestTransform $reactRequestTransform
+     * @param \Swift_Mailer $mailer
+     * @param UserRepositoryInterface $userRepository
+     * @return JsonResponse
+     */
+    public function sendEmailWhenRegistered(
+        Request $request,
+        ReactRequestTransform $reactRequestTransform,
+        \Swift_Mailer $mailer,
+        UserRepositoryInterface $userRepository
+    ) {
+        $item = $reactRequestTransform->transform($request);
+
+        $userId = $item['userId'];
+
+        $user = $userRepository->findUserById($userId);
+        $name = $user->getName();
+        $receiverEmail = $user->getEmail();
+
+        $message = (new \Swift_Message('Confirmacion registro en Web de mascotas'))
+            ->setFrom('noreply@mascotas.com')
+            ->setTo($receiverEmail)
+            ->setBody(
+                $this->renderView(
+                    'user/emailUserRegistered.twig',
+                    [
+                        'name' => $name
+                    ]
+                ),
+                'text/html'
+            )
+        ;
+
+        $mailer->send($message);
+
+        return new JsonResponse(["Email enviado con éxito"]);
     }
 
 }

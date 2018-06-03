@@ -21,11 +21,11 @@ use Symfony\Component\HttpFoundation\Request;
 class NewsController extends Controller
 {
     /**
-     * @param InsertNews            $insertNews
-     * @param Request               $request
+     * @param InsertNews $insertNews
+     * @param Request $request
      * @param ReactRequestTransform $reactRequestTransform
-     *
      * @return JsonResponse
+     * @throws \Assert\AssertionFailedException
      */
     public function insertEntry(
         InsertNews $insertNews,
@@ -78,6 +78,6 @@ class NewsController extends Controller
 
         $entryEntityRepository->setUrlNewsImage($id, $urlDb);
 
-        return new JsonResponse('Ok', '200');
+        return new JsonResponse('Imagen enviada con éxito');
     }
 }

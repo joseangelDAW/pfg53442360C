@@ -16,6 +16,7 @@ class UserRepository extends ServiceEntityRepository implements UserRepositoryIn
      * @param string $nickName
      * @param string $email
      * @param string $password
+     * @return int
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
@@ -26,7 +27,7 @@ class UserRepository extends ServiceEntityRepository implements UserRepositoryIn
         string $nickName,
         string $email,
         string $password
-    ): void {
+    ): int {
         $user = new User();
         $user->setName($name);
         $user->setSurname($surname);
@@ -37,6 +38,8 @@ class UserRepository extends ServiceEntityRepository implements UserRepositoryIn
         $user->setRole("user");
 
         $this->persistAndFlush($user);
+
+        return $user->getId();
     }
 
     public function listUser(): array
