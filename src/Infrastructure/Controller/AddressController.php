@@ -15,6 +15,8 @@ use App\Application\Address\ListAddress\ListAddress;
 use App\Application\Address\ListAddress\ListAddressCommand;
 use App\Application\Address\ListAddressByKey\ListAddressByKey;
 use App\Application\Address\ListAddressByKey\ListAddressByKeyCommand;
+use App\Application\Address\ListAddressByUserId\ListAddressByUserId;
+use App\Application\Address\ListAddressByUserId\ListAddressByUserIdCommand;
 use App\Application\Address\UpdateAddress\UpdateAddress;
 use App\Application\Address\UpdateAddress\UpdateAddressCommand;
 use App\Infrastructure\Service\ReactRequestTransform;
@@ -107,4 +109,22 @@ class AddressController extends Controller
         $output = $listAddressByKey->handle(new ListAddressByKeyCommand($key, $value));
         return $this->json($output);
     }
+
+    /**
+     * @param int $id
+     * @param ListAddressByUserId $listAddressByUserId
+     * @return JsonResponse
+     * @throws \Assert\AssertionFailedException
+     */
+    public function listAddressByUserId(
+        int $id,
+        ListAddressByUserId $listAddressByUserId
+    ) {
+
+        $output = $listAddressByUserId->handle(new ListAddressByUserIdCommand($id));
+
+        return $this->json($output);
+    }
+
+
 }

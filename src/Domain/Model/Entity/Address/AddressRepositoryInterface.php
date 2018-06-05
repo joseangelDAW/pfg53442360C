@@ -44,5 +44,7 @@ interface AddressRepositoryInterface
 
     public function findAddressById(int $id): ?Address;
 
+    public function findAddressByUserId(int $userId): array;
+
     public function persistAndFlush(Address $address): void;
 }

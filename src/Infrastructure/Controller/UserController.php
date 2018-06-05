@@ -51,7 +51,7 @@ class UserController extends Controller
                 $item['password']
             )
         );
-        return $this->json($output);
+        return new JsonResponse($output['data'], $output['code']);
     }
 
     /**

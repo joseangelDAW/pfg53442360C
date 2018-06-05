@@ -19,3 +19,7 @@ updateAddress:
     path: /updateAddress
     controller: App\Infrastructure\Controller\AddressController::updateAddress
     methods: [POST]
+
+listAddressByUserId:
+    path: /listAddressByUserId/{id}
+    controller: App\Infrastructure\Controller\AddressController::listAddressByUserId

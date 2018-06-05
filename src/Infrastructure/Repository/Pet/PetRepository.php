@@ -106,7 +106,7 @@ class PetRepository extends ServiceEntityRepository implements PetRepositoryInte
      * @return array
      * @throws \Doctrine\DBAL\DBALException
      */
-    public function findPetsByUserId($userId): array
+    public function findPetsByUserId(int $userId): array
     {
         $conn = $this->getEntityManager()->getConnection();
 

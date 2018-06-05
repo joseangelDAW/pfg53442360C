@@ -95,6 +95,25 @@ class AddressRepository extends ServiceEntityRepository implements AddressReposi
     }
 
     /**
+     * @param int $userId
+     * @return array
+     * @throws \Doctrine\DBAL\DBALException
+     */
+    public function findAddressByUserId(int $userId): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+        SELECT * FROM address p
+        WHERE p.user_id = :id
+        ';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['id' => $userId]);
+
+        return $stmt->fetchAll();
+    }
+
+    /**
      * @param string $key
      * @param string $value
      * @return array

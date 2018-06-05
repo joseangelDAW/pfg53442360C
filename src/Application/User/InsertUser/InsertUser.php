@@ -71,10 +71,11 @@ class InsertUser
         );
 
         return [
-            "data" => self::OK,
+            "data" => [
+                "message" => "Usuario insertado",
+                "returnValue" => $userId
+            ],
             "code" => self::OK_CODE,
-            "message" => "Usuario insertado",
-            "returnValue" => $userId
         ];
     }
 }
