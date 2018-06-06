@@ -48,7 +48,7 @@ class InsertUserCommand
         Assertion::notBlank($birthDate);
         Assertion::string($birthDate);
         Assertion::notBlank($email);
-        Assertion::string($email);
+        Assertion::email($email);
         Assertion::notBlank($password);
         Assertion::string($password);
 

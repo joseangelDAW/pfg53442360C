@@ -134,14 +134,13 @@ class PetRepository extends ServiceEntityRepository implements PetRepositoryInte
 
         $sql = 'select u.email, p.name, p.image from user u, pet p 
                     where u.id=p.user_id and p.type_pet=:typePet
-                    and p.sex=:sex and p.race=:race';
+                    and p.sex=:sex';
 
         $stmt = $conn->prepare($sql);
         $stmt->execute(
             [
                 'typePet' => $typePet,
                 'sex' => $sex,
-                'race' => $race
             ]
         );
 
