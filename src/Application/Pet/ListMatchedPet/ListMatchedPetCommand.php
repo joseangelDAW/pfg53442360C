@@ -16,15 +16,17 @@ class ListMatchedPetCommand
     private $typePet;
     private $race;
     private $sex;
+    private $userId;
 
     /**
      * ListMatchedPetCommand constructor.
      * @param string $typePet
      * @param string $sex
      * @param string $race
+     * @param int $userId
      * @throws \Assert\AssertionFailedException
      */
-    public function __construct(string $typePet, string $sex, string $race)
+    public function __construct(string $typePet, string $sex, string $race, int $userId)
     {
         Assertion::notBlank($typePet);
         Assertion::string($typePet);
@@ -32,10 +34,13 @@ class ListMatchedPetCommand
         Assertion::string($sex);
         Assertion::notBlank($race);
         Assertion::string($race);
+        Assertion::notBlank($userId);
+        Assertion::numeric($userId);
 
         $this->typePet = $typePet;
         $this->sex = $sex;
         $this->race = $race;
+        $this->userId = $userId;
     }
 
     /**
@@ -62,5 +67,12 @@ class ListMatchedPetCommand
         return $this->sex;
     }
 
+    /**
+     * @return int
+     */
+    public function getUserId(): int
+    {
+        return $this->userId;
+    }
 
 }

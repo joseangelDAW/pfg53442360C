@@ -60,7 +60,7 @@ interface PetRepositoryInterface
 
     public function findPetsByUserId(int $userId): array;
 
-    public function findMatchedPet(string $typePet, string $sex, string $race): array;
+    public function findMatchedPet(string $typePet, string $sex, string $race, int $userId): array;
 
     public function setUrlPetImage(int $petId, string $uri);
 

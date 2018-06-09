@@ -8,7 +8,6 @@
 
 namespace App\Application\Address\ListAddressByUserId;
 
-
 use App\Domain\Model\Entity\Address\AddressRepositoryInterface;
 
 class ListAddressByUserId

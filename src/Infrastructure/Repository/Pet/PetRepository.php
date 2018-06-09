@@ -125,15 +125,16 @@ class PetRepository extends ServiceEntityRepository implements PetRepositoryInte
      * @param string $typePet
      * @param string $sex
      * @param string $race
+     * @param int $userId
      * @return array
      * @throws \Doctrine\DBAL\DBALException
      */
-    public function findMatchedPet(string $typePet, string $sex, string $race): array
+    public function findMatchedPet(string $typePet, string $sex, string $race, int $userId): array
     {
         $conn = $this->getEntityManager()->getConnection();
 
         $sql = 'select u.email, p.name, p.image from user u, pet p 
-                    where u.id=p.user_id and p.type_pet=:typePet
+                    where u.id=p.user_id and p.user_id!=:user_id and p.type_pet=:typePet
                     and p.sex=:sex';
 
         $stmt = $conn->prepare($sql);
@@ -141,6 +142,7 @@ class PetRepository extends ServiceEntityRepository implements PetRepositoryInte
             [
                 'typePet' => $typePet,
                 'sex' => $sex,
+                'user_id' => $userId
             ]
         );
 

@@ -26,7 +26,7 @@ listPetByUserId:
     controller: App\Infrastructure\Controller\PetController::listPetByUserId
 
 listMatchedPet:
-    path: /listMatchedPet/{typePet}/{sex}/{race}
+    path: /listMatchedPet/{typePet}/{sex}/{race}/{userId}
     controller: App\Infrastructure\Controller\PetController::listMatchedPet
 
 sendEmailMatchedPet:

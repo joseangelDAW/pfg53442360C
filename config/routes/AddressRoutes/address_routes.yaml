@@ -1,7 +1,3 @@
-#insertAddress:
-#    path: /insertAddress/{street}/{number}/{userId}/{floor}/{floorInformation}/{province}/{city}/{cp}
-#    controller: App\Infrastructure\Controller\AddressController::insertAddress
-
 insertAddress:
     path: /insertAddress
     controller: App\Infrastructure\Controller\AddressController::insertAddress

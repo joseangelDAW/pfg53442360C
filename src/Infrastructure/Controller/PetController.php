@@ -161,6 +161,7 @@ class PetController extends Controller
      * @param string $typePet
      * @param string $sex
      * @param string $race
+     * @param int $userId
      * @param ListMatchedPet $listMatchedPet
      * @return JsonResponse
      * @throws \Assert\AssertionFailedException
@@ -169,10 +170,11 @@ class PetController extends Controller
         string $typePet,
         string $sex,
         string $race,
+        int $userId,
         ListMatchedPet $listMatchedPet
     ) {
 
-        $output = $listMatchedPet->handle(new ListMatchedPetCommand($typePet, $sex, $race));
+        $output = $listMatchedPet->handle(new ListMatchedPetCommand($typePet, $sex, $race, $userId));
         return $this->json($output);
 
     }

@@ -28,7 +28,8 @@ class ListMatchedPet
         $queryOutput = $this->petRepository->findMatchedPet(
             $listMatchedPetCommand->getTypePet(),
             $listMatchedPetCommand->getSex(),
-            $listMatchedPetCommand->getRace()
+            $listMatchedPetCommand->getRace(),
+            $listMatchedPetCommand->getUserId()
         );
         return $this->listMatchedPetTransform->transform($queryOutput);
     }
